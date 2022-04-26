@@ -1,5 +1,3 @@
 export default function Liked() {
-  return (
-    <div>Liked</div>
-  )
+  return <div>Liked</div>;
 }

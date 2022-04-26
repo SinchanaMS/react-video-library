@@ -1,5 +1,3 @@
 export default function WatchLater() {
-  return (
-    <div>WatchLater</div>
-  )
+  return <div>WatchLater</div>;
 }
