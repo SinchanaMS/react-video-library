@@ -1,0 +1,90 @@
+.login-container {
+  background: var(--CARD-BG);
+  min-width: max-content;
+  width: fit-content;
+  border-radius: 5px;
+  border: none;
+  margin: 7rem auto;
+  padding: 3rem;
+}
+
+.container-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-details {
+  max-width: 100%;
+  min-width: 40%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: auto;
+}
+
+.labelled-input {
+  max-width: 100%;
+  width: fit-content;
+  margin: auto;
+}
+
+.labelled-input.label-top input {
+  max-width: 100%;
+  min-width: 40%;
+  width: 20rem;
+  border: thin solid var(--DEFAULT-GREY);
+  border-radius: 4px;
+}
+
+.login-actions {
+  width: 100%;
+  margin: auto;
+}
+
+.auth-opts {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+.auth-btns {
+  display: flex;
+  width: 100%;
+}
+
+.link-btn-outline.login-btn {
+  min-width: 8rem;
+  margin: auto;
+  color: var(--PURE-WHITE);
+  border: none;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+}
+
+.new-user {
+  text-align: center;
+}
+
+.password {
+  position: relative;
+}
+
+.toggle-login-pwd {
+  position: absolute;
+  top: 1.8rem;
+  align-self: flex-end;
+  margin-right: 1rem;
+  color: var(--DEFAULT-GREY);
+}
+
+.toggle-login-pwd:hover {
+  cursor: pointer;
+}

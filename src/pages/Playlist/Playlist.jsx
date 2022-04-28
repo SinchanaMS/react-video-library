@@ -1,5 +1,3 @@
 export default function Playlist() {
-  return (
-    <div>Playlist</div>
-  )
+  return <div>Playlist</div>;
 }
