@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import { useTheme } from "../../contexts/ThemeContext";
 import "../../styles/videolisting.css";
@@ -8,23 +8,27 @@ export default function Explore() {
   const { theme } = useTheme();
   const [videoList, setVideoList] = useState([]);
 
-  const videos = async () => {
-    const response = await axios.get("/api/videos");
-    try {
-      if (response.status === 200) {
-        setVideoList(response.data.videos);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const randomVideos = videoList.sort(() => Math.random() - 0.5);
 
-  videos();
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get("/api/videos");
+        if (response.status === 200) {
+          setVideoList(response.data.videos);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVideos();
+  }, []);
+
   return (
     <div className="main-content">
       <Sidebar />
       <div className={theme === "light" ? "video-list" : "video-list dark"}>
-        {videoList.map(
+        {randomVideos.map(
           ({ id, thumbnail: { url }, title, creatorImg, creator, views }) => (
             <div
               className={theme === "light" ? "video-card" : "video-card dark"}
