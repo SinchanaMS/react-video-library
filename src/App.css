@@ -1,1 +1,24 @@
 @import url("https://clay-ui.netlify.app/stylesheets/index.css");
+
+:root {
+  --CARD-LIGHT: #f0eded;
+  --CARD-DARK: #202020;
+  --DARK-THEME-BG: #2b2a2a;
+  --DARK-THEME-TEXT: #e9e6e6;
+  --DARK-NAV-BG: #373636;
+  --LIGHT-NAV-BG: #f5f1f1;
+  --CTAS-LIGHT: #3b3939;
+  --CTAS-DARK: #ded6d6;
+  --BRAND-LOGO-BG: #b7caca;
+  --SEARCH-BAR-BG: #f8f8f8;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--DARK-THEME-BG);
+  background: none;
+}
+
+body::-webkit-scrollbar {
+  width: 7px;
+  background: var(--DARK-THEME-BG);
+}

@@ -1,0 +1,49 @@
+.main-content {
+  display: flex;
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin-top: 3rem;
+  margin-left: 9.5rem;
+}
+
+.video-list.dark {
+  background-color: var(--DARK-THEME-BG);
+  color: var(--DARK-THEME-TEXT);
+}
+
+.video-title {
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.video-card {
+  width: 20rem;
+  margin: 8px;
+  border-radius: 4px;
+  background-color: var(--CARD-LIGHT);
+  overflow: hidden;
+}
+
+.video-card.dark {
+  background-color: var(--CARD-DARK);
+}
+
+.video-details {
+  display: flex;
+  gap: 1rem;
+  margin-top: 7px;
+  padding: 5px 7px;
+}
+
+.creator-dp {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}

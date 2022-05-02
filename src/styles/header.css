@@ -1,0 +1,79 @@
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 7px;
+  background-color: var(--LIGHT-NAV-BG);
+}
+
+.main-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.brand-logo {
+  font-size: 36px;
+  background-color: var(--BRAND-LOGO-BG);
+  border-radius: 7px;
+  margin: 4px;
+}
+
+.brandname,
+.header-ctas {
+  color: var(--CTAS-LIGHT);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-input {
+  padding: 4px;
+  width: 30rem;
+  border: thin solid var(--DEFAULT-GREY);
+  border-radius: 4px;
+  background: var(--SEARCH-BAR-BG);
+}
+
+.search-input:focus {
+  border-color: var(--PURE-BLACK);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  font-size: 20px;
+}
+
+.header-ctas {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.header.dark {
+  background-color: var(--DARK-NAV-BG);
+}
+
+.header.dark .brandname,
+.header.dark .header-ctas,
+.header-ctas Link,
+.header.dark .menu {
+  color: var(--CTAS-DARK);
+}
+
+.theme-icon,
+.menu {
+  font-size: 24px;
+}
+
+.menu {
+  font-size: 30px;
+}
