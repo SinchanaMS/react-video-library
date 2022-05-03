@@ -6,8 +6,7 @@ import {
   MdMenu,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { useTheme } from "../contexts/ThemeContext";
+import { useAuth, useTheme } from "../contexts/contexts";
 import "../styles/header.css";
 
 export default function Header() {
@@ -32,7 +31,11 @@ export default function Header() {
       <div className="header-ctas">
         {isLoggedIn ? (
           <div className="header-ctas">
-            <Link onClick={() => logoutHandler()} className="header-ctas">
+            <Link
+              to="/"
+              onClick={() => logoutHandler()}
+              className="header-ctas"
+            >
               Logout
             </Link>
           </div>
