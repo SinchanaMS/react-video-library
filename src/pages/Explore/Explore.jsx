@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
+import VideoCard from "../../components/VideoCard";
 import { useTheme } from "../../contexts/ThemeContext";
 import "../../styles/videolisting.css";
 
@@ -8,7 +9,8 @@ export default function Explore() {
   const { theme } = useTheme();
   const [videoList, setVideoList] = useState([]);
 
-  const randomVideos = videoList.sort(() => Math.random() - 0.5);
+  // the below line will be uncommented in the future, pleases ignore for now
+  // const randomVideos => videoList.sort(() => Math.random() - 0.5));
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -28,24 +30,9 @@ export default function Explore() {
     <div className="main-content">
       <Sidebar />
       <div className={theme === "light" ? "video-list" : "video-list dark"}>
-        {randomVideos.map(
-          ({ id, thumbnail: { url }, title, creatorImg, creator, views }) => (
-            <div
-              className={theme === "light" ? "video-card" : "video-card dark"}
-              key={id}
-            >
-              <img src={url} alt={title} className="video-thumbnail" />
-              <div className="video-details">
-                <img src={creatorImg} className="creator-dp" />
-                <div className="creator-text">
-                  <h3 className="video-title">{title}</h3>
-                  <p className="video-creator p-sm p-grey">{creator}</p>
-                  <p className="video-views p-sm p-grey">{views} views</p>
-                </div>
-              </div>
-            </div>
-          )
-        )}
+        {videoList.map((video) => (
+          <VideoCard video={video} key={video._id} />
+        ))}
       </div>
     </div>
   );

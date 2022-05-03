@@ -1,3 +1,9 @@
+/* to be added in app.css */
+:root {
+  --DIALOG-TEXT: #000000;
+  --DIALOG-HOVER-BG: #cbc8c8;
+}
+
 .main-content {
   display: flex;
 }
@@ -8,6 +14,7 @@
   padding: 1rem;
   margin-top: 3rem;
   margin-left: 9.5rem;
+  min-height: 100vh;
 }
 
 .video-list.dark {
@@ -26,9 +33,11 @@
 .video-card {
   width: 20rem;
   margin: 8px;
+  min-height: 17.75rem;
   border-radius: 4px;
   background-color: var(--CARD-LIGHT);
   overflow: hidden;
+  position: relative;
 }
 
 .video-card.dark {
@@ -46,4 +55,42 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+}
+
+.more-options {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  align-self: flex-end;
+  padding: 5px;
+  font-size: 1.75rem;
+}
+
+.options-dialog.hide {
+  display: none;
+}
+
+.options-dialog {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 3px;
+  width: fit-content;
+  background-color: var(--CARD-LIGHT);
+  color: var(--DIALOG-TEXT);
+  padding: 5px 10px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.options {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 0 7px;
+  border-radius: 4px;
+}
+
+.options:hover {
+  cursor: pointer;
+  background-color: var(--DIALOG-HOVER-BG);
 }
