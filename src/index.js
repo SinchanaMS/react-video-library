@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { makeServer } from "./server";
+import "index.css";
+import App from "App";
+import { makeServer } from "server";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./contexts/AuthContext";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { AuthProvider, ThemeProvider, VideoProvider } from "contexts/contexts";
 
 // Call make Server
 makeServer();
@@ -14,9 +13,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <VideoProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </VideoProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

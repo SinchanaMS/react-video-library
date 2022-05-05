@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../../styles/login.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "styles/login.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
   const [showPwd, setShowPwd] = useState(false);
+  let lastLocation = location.state?.from?.pathname;
 
   const testUser = {
     email: "theMarauders@gmail.com",
@@ -30,7 +32,7 @@ export default function Login() {
       if (response.status === 200) {
         const userToken = response.data.encodedToken;
         localStorage.setItem("userToken", userToken);
-        navigate("/");
+        navigate(lastLocation);
       }
     } catch (error) {
       setLoginError("An error occurred.");

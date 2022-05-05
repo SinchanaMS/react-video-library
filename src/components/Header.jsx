@@ -5,14 +5,14 @@ import {
   MdWbSunny,
   MdMenu,
 } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { useTheme } from "../contexts/ThemeContext";
-import "../styles/header.css";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth, useTheme } from "contexts/contexts";
+import "styles/header.css";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
   const { isLoggedIn, logoutHandler } = useAuth();
+  const location = useLocation();
 
   return (
     <div className={theme === "light" ? "header" : "header dark"}>
@@ -32,13 +32,21 @@ export default function Header() {
       <div className="header-ctas">
         {isLoggedIn ? (
           <div className="header-ctas">
-            <Link onClick={() => logoutHandler()} className="header-ctas">
+            <Link
+              to="/"
+              onClick={() => logoutHandler()}
+              className="header-ctas"
+            >
               Logout
             </Link>
           </div>
         ) : (
           <div className="header-ctas">
-            <Link to="/login" className="header-ctas">
+            <Link
+              to="/login"
+              className="header-ctas"
+              state={{ from: location }}
+            >
               Login
             </Link>
             <Link to="/signup" className="header-ctas">

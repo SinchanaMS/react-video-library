@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../../styles/signup.css";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "styles/signup.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [signUpError, setSignUpError] = useState("");
   const [signUpData, setSignUpData] = useState({
     firstName: "",
@@ -29,6 +30,7 @@ export default function SignUp() {
     sendSignUpData(signUpData);
   };
 
+  let lastLocation = location.state?.from?.pathname;
   const sendSignUpData = async (data) => {
     if (data.password === data.confirmPassword) {
       try {
@@ -37,7 +39,7 @@ export default function SignUp() {
           const { data } = response;
           const userToken = data.encodedToken;
           localStorage.setItem("userToken", userToken);
-          navigate("/");
+          navigate(lastLocation);
         }
       } catch (error) {
         setSignUpError("An error occurred.");

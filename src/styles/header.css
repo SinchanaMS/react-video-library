@@ -1,11 +1,13 @@
 .header {
   position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 7px;
   background-color: var(--LIGHT-NAV-BG);
+  z-index: 1;
 }
 
 .main-logo {

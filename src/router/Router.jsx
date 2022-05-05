@@ -9,16 +9,19 @@ import {
   Playlist,
   SignUp,
   WatchLater,
-} from "../pages/pages";
+} from "pages/pages";
+import RequiresAuth from "./utils/RequiresAuth";
 
 export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Explore />} />
-      <Route path="/history" element={<History />} />
-      <Route path="/liked" element={<Liked />} />
-      <Route path="/playlist" element={<Playlist />} />
-      <Route path="/watchlater" element={<WatchLater />} />
+      <Route element={<RequiresAuth />}>
+        <Route path="/history" element={<History />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/liked" element={<Liked />} />
+        <Route path="/watchlater" element={<WatchLater />} />
+      </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/api" element={<MockApi />} />
