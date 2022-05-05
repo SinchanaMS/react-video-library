@@ -6,16 +6,13 @@ import {
 } from "../router/utils/HelperFunctions";
 
 const VideoContext = createContext();
-
+const initialData = {
+  watchList: [],
+  likedList: [],
+  history: [],
+};
 const VideoProvider = ({ children }) => {
-  const initialData = {
-    watchList: [],
-    likedList: [],
-    history: [],
-  };
-
   const [videoData, videoDispatch] = useReducer(videoReducer, initialData);
-  console.log(videoData);
 
   return (
     <VideoContext.Provider

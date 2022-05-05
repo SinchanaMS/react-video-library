@@ -1,6 +1,6 @@
-import VideoCard from "../../components/VideoCard";
-import { useTheme, useVideo } from "../../contexts/contexts";
-import "../../styles/videolisting.css";
+import VideoCard from "components/VideoCard";
+import { useTheme, useVideo } from "contexts/contexts";
+import "styles/videolisting.css";
 
 export default function WatchLater() {
   const { theme } = useTheme();

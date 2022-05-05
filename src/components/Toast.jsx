@@ -1,7 +1,7 @@
 import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "../styles/toast.css";
+import "styles/toast.css";
 
 export default function Toast({ message, type, theme }) {
   return toast(message, {

@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "./App.css";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import { useTheme } from "./contexts/ThemeContext";
-import Router from "./router/Router";
+import "App.css";
+import Header from "components/Header";
+import Sidebar from "components/Sidebar";
+import { useTheme } from "contexts/ThemeContext";
+import Router from "router/Router";
 
 function App() {
   const location = useLocation();

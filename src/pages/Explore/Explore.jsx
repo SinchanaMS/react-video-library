@@ -1,16 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Sidebar from "../../components/Sidebar";
-import VideoCard from "../../components/VideoCard";
-import { useTheme } from "../../contexts/ThemeContext";
-import "../../styles/videolisting.css";
+import Sidebar from "components/Sidebar";
+import VideoCard from "components/VideoCard";
+import { useTheme } from "contexts/ThemeContext";
+import "styles/videolisting.css";
 
 export default function Explore() {
   const { theme } = useTheme();
   const [videoList, setVideoList] = useState([]);
 
-  // the below line will be uncommented in the future, pleases ignore for now
-  // const randomVideos => videoList.sort(() => Math.random() - 0.5));
+  const randomVideos = videoList.sort(() => Math.random() - 0.5);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -30,7 +29,7 @@ export default function Explore() {
     <div className="main-content">
       <Sidebar />
       <div className={theme === "light" ? "video-list" : "video-list dark"}>
-        {videoList.map((video) => (
+        {randomVideos.map((video) => (
           <VideoCard video={video} key={video._id} />
         ))}
       </div>

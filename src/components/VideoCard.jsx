@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useTheme, useVideo } from "../contexts/contexts";
+import { useTheme, useVideo } from "contexts/contexts";
 import { MdMoreVert, MdPlaylistPlay, MdWatchLater } from "react-icons/md";
-import "../styles/videolisting.css";
+import "styles/videolisting.css";
 
 export default function VideoCard({ video }) {
   const { theme } = useTheme();
@@ -22,6 +22,8 @@ export default function VideoCard({ video }) {
     creator,
     views,
   } = video;
+
+  const inWatchList = watchList.some((item) => item._id === video._id);
 
   return (
     <div>
@@ -47,7 +49,7 @@ export default function VideoCard({ video }) {
                 showOptions ? "options-dialog shadow" : "options-dialog hide"
               }
             >
-              {watchList.some((item) => item._id === video._id) ? (
+              {inWatchList ? (
                 <p
                   className="options p-sm"
                   onClick={() => removeFromWatchlist(video, videoDispatch)}

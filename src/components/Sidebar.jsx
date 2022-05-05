@@ -7,8 +7,8 @@ import {
   MdWatchLater,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useTheme } from "../contexts/ThemeContext";
-import "../styles/sidebar.css";
+import { useTheme } from "contexts/ThemeContext";
+import "styles/sidebar.css";
 
 export default function Sidebar() {
   const { theme } = useTheme();

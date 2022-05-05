@@ -1,5 +1,5 @@
 import axios from "axios";
-import Toast from "../../components/Toast";
+import Toast from "components/Toast";
 
 export const addToWatchlist = async (video, videoDispatch) => {
   try {
