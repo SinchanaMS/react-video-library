@@ -1,0 +1,63 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.player {
+  background-color: var(--BG-LIGHT);
+}
+
+.video-player {
+  margin: 1rem auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: fit-content;
+  position: relative;
+  background-color: var(--CARD-LIGHT);
+  display: flex;
+  align-items: flex-start;
+}
+
+.video-player.dark {
+  background-color: var(--CARD-DARK);
+  display: flex;
+}
+
+.videos {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.suggestions {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.videocard .video-card {
+  width: 15rem;
+  margin: 8px;
+  height: 13.5rem;
+  min-height: 13.5rem;
+}
+
+.react-player-card {
+  width: 1536px;
+  height: 1024px;
+}
+
+.player-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.player-options {
+  font-size: 24px;
+}
+
+.video-text {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}

@@ -613,30 +613,7 @@ export const videos = [
     views: Math.floor(Math.random() * 1000) + "K",
     published: "2022-04-28T16:18:08Z",
   },
-  {
-    _id: "1287208c-c503-4cbb-bfc6-5526af262a28",
-    category: "Music",
-    videoId: "5mFTXbZzOAE",
-    creator: "Time Music",
-    creatorImg:
-      "https://yt3.ggpht.com/nTdLm-RoJp7vR65xckLJEXyBMDWyUBwyZquIjVo9wfVWANiZh_FUV_UkSH4ZB6d0N1teiqap=s68-c-k-c0x00ffffff-no-rj",
-    title:
-      "Best songs to boost your mood ~ Playlist for study, working, relax & travel",
-    description:
-      "Best songs to boost your mood ~ Playlist for study, working, relax & travel\nHope you enjoy this chill music mix: http://bit.ly/chillmixplaylist\nBest english songs pop music & chill mix: http://bit.ly/TimeMusicMix\n\n\n👍Suggested Video:\nRelaxing morning songs: https://www.youtube.com/watch?v=RqldebYjjwY\n[Playlist] To Start Your Day: https://www.youtube.com/watch?v=CfEryEkmPEk\nChoose happy morning chill vibes: https://www.youtube.com/watch?v=8VXkUpg13M4\n\n\n💙 Time Music Socials:\nInstagram: http://bit.ly/timemusicmix\nYoutube: https://www.youtube.com/c/TimeMusicChill\n\n\n✌ Hi guys, every day I update the channel with playlist music mix of the newest pop, chill tracks, summer songs, road trip songs, morning music, coffee songs, r&b songs and chill vibes playlist, best chill music mix/depression-sad songs for my subscribers.",
-    thumbnail: {
-      url: "https://i.ytimg.com/vi/5mFTXbZzOAE/mqdefault.jpg",
-      width: 120,
-      height: 90,
-    },
-    isWatchList: false,
-    isLiked: false,
-    isDisliked: false,
-    videoDuration: "",
-    likes: Math.floor(Math.random() * 1000) + "K",
-    views: Math.floor(Math.random() * 1000) + "K",
-    published: "2022-04-28T16:22:01Z",
-  },
+
   {
     _id: "19a3fd99-e155-4df3-b2b7-12b29da8013c",
     category: "Music",
