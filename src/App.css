@@ -11,14 +11,32 @@
   --CTAS-DARK: #ded6d6;
   --BRAND-LOGO-BG: #b7caca;
   --SEARCH-BAR-BG: #f8f8f8;
+  --BG-LIGHT: #e0dbdb;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--DARK-THEME-BG);
-  background: none;
+  background: var(--CARD-DARK);
 }
 
 body::-webkit-scrollbar {
   width: 7px;
+  background: var(--DARK-THEME-BG);
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  background: var(--CARD-DARK);
+}
+
+.suggestions::-webkit-scrollbar {
+  height: 7px;
+  background: var(--DARK-THEME-BG);
+}
+
+.videos::-webkit-scrollbar-thumb {
+  background: var(--CARD-DARK);
+}
+
+.videos::-webkit-scrollbar {
+  height: 7px;
   background: var(--DARK-THEME-BG);
 }

@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useTheme, useVideo } from "contexts/contexts";
-import { MdMoreVert, MdPlaylistPlay, MdWatchLater } from "react-icons/md";
+import { Link } from "react-router-dom";
+import {
+  MdMoreVert,
+  MdPlaylistPlay,
+  MdWatchLater,
+  MdOutlineWatchLater,
+} from "react-icons/md";
+import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
 import "styles/videolisting.css";
 
 export default function VideoCard({ video }) {
@@ -10,8 +17,10 @@ export default function VideoCard({ video }) {
   const {
     addToWatchlist,
     removeFromWatchlist,
+    addToLikedList,
+    removeFromLikedList,
     videoDispatch,
-    videoData: { watchList },
+    videoData: { watchList, likedList },
   } = useVideo();
 
   const {
@@ -24,6 +33,7 @@ export default function VideoCard({ video }) {
   } = video;
 
   const inWatchList = watchList.some((item) => item._id === video._id);
+  const inLikedList = likedList.some((item) => item._id === video._id);
 
   return (
     <div>
@@ -31,7 +41,9 @@ export default function VideoCard({ video }) {
         className={theme === "light" ? "video-card" : "video-card dark"}
         key={id}
       >
-        <img src={url} alt={title} className="video-thumbnail" />
+        <Link to={`/video/${video.videoId}`}>
+          <img src={url} alt={title} className="video-thumbnail" />
+        </Link>
         <div className="video-details">
           <img src={creatorImg} className="creator-dp" />
           <div className="creator-text">
@@ -61,11 +73,26 @@ export default function VideoCard({ video }) {
                   className="options p-sm"
                   onClick={() => addToWatchlist(video, videoDispatch)}
                 >
-                  <MdWatchLater />
+                  <MdOutlineWatchLater />
                   Add to Watch Later
                 </p>
               )}
-
+              {inLikedList ? (
+                <p
+                  className="options p-sm"
+                  onClick={() => removeFromLikedList(video, videoDispatch)}
+                >
+                  <IoHeartSharp /> Remove from Liked Videos
+                </p>
+              ) : (
+                <p
+                  className="options p-sm"
+                  onClick={() => addToLikedList(video, videoDispatch)}
+                >
+                  <IoHeartOutline />
+                  Add to Liked Videos
+                </p>
+              )}
               <p className="options p-sm">
                 <MdPlaylistPlay />
                 Add to Playlist

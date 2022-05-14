@@ -7,6 +7,7 @@ import MockApi from "./Mockman/MockApi";
 import PageNotFound from "./PageNotFound/PageNotFound";
 import Playlist from "./Playlist/Playlist";
 import WatchLater from "./WatchLater/WatchLater";
+import VideoPage from "./VideoPage/VideoPage";
 
 export {
   Explore,
@@ -18,4 +19,5 @@ export {
   PageNotFound,
   Playlist,
   WatchLater,
+  VideoPage,
 };

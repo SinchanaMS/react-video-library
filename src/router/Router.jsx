@@ -9,6 +9,7 @@ import {
   Playlist,
   SignUp,
   WatchLater,
+  VideoPage,
 } from "pages/pages";
 import RequiresAuth from "./utils/RequiresAuth";
 
@@ -22,6 +23,7 @@ export default function Router() {
         <Route path="/liked" element={<Liked />} />
         <Route path="/watchlater" element={<WatchLater />} />
       </Route>
+      <Route path="/video/:videoId" element={<VideoPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/api" element={<MockApi />} />
