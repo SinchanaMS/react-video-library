@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import VideoCard from "components/VideoCard";
 import { useTheme, useVideo } from "contexts/contexts";
 import ReactPlayer from "react-player";
@@ -39,11 +40,13 @@ export default function VideoPage() {
   const inWatchList = watchList.some((item) => item._id === video._id);
   const inLikedList = likedList.some((item) => item._id === video._id);
 
-  window.scroll({
-    top: 0,
-    left: 100,
-    behavior: "smooth",
-  });
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, [video]);
 
   return (
     <div
@@ -101,28 +104,24 @@ export default function VideoPage() {
 
       <div className="suggestions">
         <h3>View similar</h3>
-        <div className="videos">
+        <ul className="videos">
           {suggestedList.map((video) => (
-            <ul key={video?._id}>
-              <li className="videocard">
-                <VideoCard video={video} key={video?._id} />
-              </li>
-            </ul>
+            <li className="videocard" key={video?._id}>
+              <VideoCard video={video} key={video?._id} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="suggestions">
         <h3>Watch more</h3>
-        <div className="videos">
+        <ul className="videos">
           {randomVideos.map((video) => (
-            <ul key={video?._id}>
-              <li className="videocard">
-                <VideoCard video={video} key={video?._id} />
-              </li>
-            </ul>
+            <li className="videocard" key={video?._id}>
+              <VideoCard video={video} key={video?._id} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

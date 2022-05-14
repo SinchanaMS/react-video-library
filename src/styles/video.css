@@ -37,8 +37,8 @@ html {
 .videocard .video-card {
   width: 15rem;
   margin: 8px;
-  height: 13.5rem;
   min-height: 13.5rem;
+  border-radius: 1rem;
 }
 
 .react-player-card {
