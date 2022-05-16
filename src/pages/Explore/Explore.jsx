@@ -1,22 +1,25 @@
+import CategoryList from "components/CategoryList";
 import Sidebar from "components/Sidebar";
 import VideoCard from "components/VideoCard";
-import { useVideo } from "contexts/contexts";
-import { useTheme } from "contexts/ThemeContext";
+import { useVideo, useTheme } from "contexts/contexts";
 import "styles/videolisting.css";
 
 export default function Explore() {
   const { theme } = useTheme();
-  const { videoList } = useVideo();
-
-  const randomVideos = videoList.sort(() => Math.random() - 0.5);
+  const { filteredVideos } = useVideo();
 
   return (
     <div className="main-content">
       <Sidebar />
-      <div className={theme === "light" ? "video-list" : "video-list dark"}>
-        {randomVideos.map((video) => (
-          <VideoCard video={video} key={video._id} />
-        ))}
+      <div
+        className={theme === "light" ? "explore-videos" : "explore-videos dark"}
+      >
+        <CategoryList />
+        <div className={theme === "light" ? "video-list" : "video-list dark"}>
+          {filteredVideos?.map((video) => (
+            <VideoCard video={video} key={video._id} />
+          ))}
+        </div>
       </div>
     </div>
   );

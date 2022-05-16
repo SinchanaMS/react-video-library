@@ -15,10 +15,12 @@ export default function VideoCard({ video }) {
   const [showOptions, setShowOptions] = useState(false);
 
   const {
-    addToWatchlist,
-    removeFromWatchlist,
-    addToLikedList,
-    removeFromLikedList,
+    helperFunctions: {
+      addToWatchlist,
+      removeFromWatchlist,
+      addToLikedList,
+      removeFromLikedList,
+    },
     videoDispatch,
     videoData: { watchList, likedList },
   } = useVideo();

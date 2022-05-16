@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import VideoCard from "components/VideoCard";
-import { useTheme, useVideo } from "contexts/contexts";
+import { useAuth, useTheme, useVideo } from "contexts/contexts";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
@@ -15,28 +15,31 @@ import "styles/videolisting.css";
 export default function VideoPage() {
   const { videoId } = useParams();
   const { theme } = useTheme();
+  const { isLoggedIn } = useAuth();
 
   const {
-    addToWatchlist,
-    removeFromWatchlist,
-    addToLikedList,
-    removeFromLikedList,
     videoDispatch,
+    filteredVideos,
     videoData: { watchList, likedList },
-    videoList,
-    randomVideos,
+    helperFunctions: {
+      addToWatchlist,
+      removeFromWatchlist,
+      addToLikedList,
+      removeFromLikedList,
+      addToHistory,
+    },
   } = useVideo();
 
-  const getVideo = (videoList, videoId) => {
-    return videoList.find((video) => video.videoId === videoId);
+  const getVideo = (filteredVideos, videoId) => {
+    return filteredVideos.find((video) => video.videoId === videoId);
   };
 
-  const suggestedVideos = (videoList, video) => {
-    return videoList.filter((vid) => vid.category === video.category);
+  const suggestedVideos = (filteredVideos, video) => {
+    return filteredVideos.filter((vid) => vid.category === video.category);
   };
 
-  const video = getVideo(videoList, videoId);
-  const suggestedList = suggestedVideos(videoList, video);
+  const video = getVideo(filteredVideos, videoId);
+  const suggestedList = suggestedVideos(filteredVideos, video);
   const inWatchList = watchList.some((item) => item._id === video._id);
   const inLikedList = likedList.some((item) => item._id === video._id);
 
@@ -62,6 +65,7 @@ export default function VideoPage() {
             width="1024px"
             height="575px"
             playing={true}
+            onReady={isLoggedIn ? () => addToHistory(video, videoDispatch) : ""}
             url={`https://www.youtube.com/watch?v=${videoId}`}
           />
           <div className="video-text">
@@ -116,7 +120,7 @@ export default function VideoPage() {
       <div className="suggestions">
         <h3>Watch more</h3>
         <ul className="videos">
-          {randomVideos.map((video) => (
+          {filteredVideos.map((video) => (
             <li className="videocard" key={video?._id}>
               <VideoCard video={video} key={video?._id} />
             </li>
