@@ -16,7 +16,7 @@ export const categories = async (videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -43,7 +43,7 @@ export const addToWatchlist = async (video, videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -66,7 +66,7 @@ export const removeFromWatchlist = async (video, videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -90,7 +90,7 @@ export const addToLikedList = async (video, videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -113,7 +113,7 @@ export const removeFromLikedList = async (video, videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -136,13 +136,13 @@ export const addToHistory = async (video, videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
 export const deleteFromHistory = async (video, videoDispatch) => {
   try {
-    const response = await axios.delete(`/api/user/history/${video._id}`, {
+    const response = await axios.delete(`/api/user/historys/${video._id}`, {
       headers: {
         authorization: userToken,
       },
@@ -159,7 +159,7 @@ export const deleteFromHistory = async (video, videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -182,7 +182,7 @@ export const clearHistory = async (videoDispatch) => {
       type: "error",
       message: "Oops! An error occurred.Try again later.",
     });
-    console.log(error);
+    console.log(error.message);
   }
 };
 
