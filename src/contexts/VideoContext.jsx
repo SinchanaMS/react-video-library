@@ -16,6 +16,7 @@ const initialData = {
   likedList: [],
   history: [],
   categoryList: [],
+  playlists: [],
 };
 
 const VideoProvider = ({ children }) => {
