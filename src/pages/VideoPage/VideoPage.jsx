@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import VideoCard from "components/VideoCard";
-import { useAuth, useTheme, useVideo } from "contexts/contexts";
+import { useAuth, useTheme, useVideo, usePlaylist } from "contexts/contexts";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ import {
 } from "react-icons/md";
 import "styles/video.css";
 import "styles/videolisting.css";
+import PlaylistModal from "components/PlaylistModal";
 
 export default function VideoPage() {
   const { videoId } = useParams();
@@ -50,6 +51,8 @@ export default function VideoPage() {
       behavior: "smooth",
     });
   }, [video]);
+
+  const { showPlaylistModal, setShowPlaylistModal } = usePlaylist();
 
   return (
     <div
@@ -100,8 +103,16 @@ export default function VideoPage() {
                   onClick={() => addToLikedList(video, videoDispatch)}
                 />
               )}
-              <MdPlaylistPlay className="player-options p-sm" />
+              <MdPlaylistPlay
+                className="player-options p-sm"
+                onClick={() => {
+                  setShowPlaylistModal((prev) => !prev);
+                }}
+              />
             </div>
+            {showPlaylistModal && (
+              <PlaylistModal video={video} key={video._id} />
+            )}
           </div>
         </div>
       </div>

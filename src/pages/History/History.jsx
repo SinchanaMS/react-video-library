@@ -14,7 +14,12 @@ export default function History() {
 
   return (
     <div className={theme === "light" ? "history-list" : "history-list dark"}>
-      <button onClick={() => clearHistory(videoDispatch)}>Clear History</button>
+      <button
+        onClick={() => clearHistory(videoDispatch)}
+        className="clear-history"
+      >
+        Clear History
+      </button>
       <div className={theme === "light" ? "video-list" : "video-list dark"}>
         {history.map((video) => (
           <div className="history-video" key={video._id}>

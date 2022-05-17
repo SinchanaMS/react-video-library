@@ -4,7 +4,12 @@ import "index.css";
 import App from "App";
 import { makeServer } from "server";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, ThemeProvider, VideoProvider } from "contexts/contexts";
+import {
+  AuthProvider,
+  ThemeProvider,
+  VideoProvider,
+  PlaylistProvider,
+} from "contexts/contexts";
 
 // Call make Server
 makeServer();
@@ -13,11 +18,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <VideoProvider>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </VideoProvider>
+        <PlaylistProvider>
+          <VideoProvider>
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </VideoProvider>
+        </PlaylistProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -10,6 +10,7 @@ import {
   SignUp,
   WatchLater,
   VideoPage,
+  PlaylistPage,
 } from "pages/pages";
 import RequiresAuth from "./utils/RequiresAuth";
 
@@ -20,6 +21,7 @@ export default function Router() {
       <Route element={<RequiresAuth />}>
         <Route path="/history" element={<History />} />
         <Route path="/playlist" element={<Playlist />} />
+        <Route path="/playlist/:playlistId" element={<PlaylistPage />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/watchlater" element={<WatchLater />} />
       </Route>

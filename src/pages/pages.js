@@ -8,6 +8,7 @@ import PageNotFound from "./PageNotFound/PageNotFound";
 import Playlist from "./Playlist/Playlist";
 import WatchLater from "./WatchLater/WatchLater";
 import VideoPage from "./VideoPage/VideoPage";
+import PlaylistPage from "./PlaylistPage/PlaylistPage";
 
 export {
   Explore,
@@ -20,4 +21,5 @@ export {
   Playlist,
   WatchLater,
   VideoPage,
+  PlaylistPage,
 };

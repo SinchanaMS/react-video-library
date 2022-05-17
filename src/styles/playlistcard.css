@@ -1,0 +1,47 @@
+.playlist-card {
+  height: auto;
+  width: 17rem;
+  background-color: var(--LIGHT-NAV-BG);
+  color: var(--CARD-DARK);
+  margin: 10px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.playlist-card.dark {
+  background-color: var(--DARK-NAV-BG);
+  color: var(--DARK-THEME-TEXT);
+}
+
+.playlist-details {
+  padding: 7px 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.delete-icon {
+  font-size: 18px;
+}
+
+.delete-icon:hover {
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+
+.playlist-thumbnail {
+  max-height: 9rem;
+  width: 100%;
+  margin: auto;
+}
+
+.playlist-videos {
+  position: relative;
+}
+
+.delete-video {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+}

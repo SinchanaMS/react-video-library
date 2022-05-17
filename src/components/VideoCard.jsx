@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { useTheme, useVideo } from "contexts/contexts";
 import { Link } from "react-router-dom";
-import {
-  MdMoreVert,
-  MdPlaylistPlay,
-  MdWatchLater,
-  MdOutlineWatchLater,
-} from "react-icons/md";
+import { MdMoreVert, MdWatchLater, MdOutlineWatchLater } from "react-icons/md";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
 import "styles/videolisting.css";
 
@@ -64,41 +59,37 @@ export default function VideoCard({ video }) {
               }
             >
               {inWatchList ? (
-                <p
+                <button
                   className="options p-sm"
                   onClick={() => removeFromWatchlist(video, videoDispatch)}
                 >
                   <MdWatchLater /> Remove from Watch Later
-                </p>
+                </button>
               ) : (
-                <p
+                <button
                   className="options p-sm"
                   onClick={() => addToWatchlist(video, videoDispatch)}
                 >
                   <MdOutlineWatchLater />
                   Add to Watch Later
-                </p>
+                </button>
               )}
               {inLikedList ? (
-                <p
+                <button
                   className="options p-sm"
                   onClick={() => removeFromLikedList(video, videoDispatch)}
                 >
                   <IoHeartSharp /> Remove from Liked Videos
-                </p>
+                </button>
               ) : (
-                <p
+                <button
                   className="options p-sm"
                   onClick={() => addToLikedList(video, videoDispatch)}
                 >
                   <IoHeartOutline />
                   Add to Liked Videos
-                </p>
+                </button>
               )}
-              <p className="options p-sm">
-                <MdPlaylistPlay />
-                Add to Playlist
-              </p>
             </div>
           </div>
         </div>
