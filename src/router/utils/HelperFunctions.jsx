@@ -132,17 +132,20 @@ export const addToHistory = async (video, videoDispatch) => {
       videoDispatch({ type: "ADD_TO_HISTORY", payload: response.data.history });
     }
   } catch (error) {
-    Toast({
-      type: "error",
-      message: "Oops! An error occurred.Try again later.",
-    });
+    if (error.response.status === 409) {
+      console.log(error.message);
+    } else
+      Toast({
+        type: "error",
+        message: "Oops! An error occurred.Try again later.",
+      });
     console.log(error.message);
   }
 };
 
 export const deleteFromHistory = async (video, videoDispatch) => {
   try {
-    const response = await axios.delete(`/api/user/historys/${video._id}`, {
+    const response = await axios.delete(`/api/user/history/${video._id}`, {
       headers: {
         authorization: userToken,
       },

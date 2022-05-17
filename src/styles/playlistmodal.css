@@ -106,3 +106,12 @@
   align-items: center;
   gap: 10px;
 }
+
+.check-icon {
+  font-size: 20px;
+  color: var(--CHECK-ICON-BG);
+}
+
+.circle-icon {
+  font-size: 20px;
+}

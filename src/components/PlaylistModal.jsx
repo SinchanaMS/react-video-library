@@ -1,9 +1,14 @@
 import React from "react";
 import "styles/playlistmodal.css";
-import { AiFillCloseCircle, AiFillPlusCircle } from "react-icons/ai";
+import {
+  AiFillCloseCircle,
+  AiFillPlusCircle,
+  AiFillCheckCircle,
+} from "react-icons/ai";
 import { addToPlaylist, createPlaylist } from "router/utils/HelperFunctions";
 import { useVideo, useTheme } from "contexts/contexts";
 import { usePlaylist } from "contexts/PlaylistContext";
+import Toast from "./Toast";
 
 export default function PlaylistModal({ video }) {
   const { playlist, setPlaylist, setShowPlaylistModal } = usePlaylist();
@@ -13,6 +18,10 @@ export default function PlaylistModal({ video }) {
   } = useVideo();
 
   const { theme } = useTheme();
+
+  const videoInPlaylist = (playlist) => {
+    return playlist.videos.some((vid) => vid._id === video._id);
+  };
 
   return (
     <div
@@ -32,10 +41,18 @@ export default function PlaylistModal({ video }) {
           {playlists.map((playlist) => (
             <li
               key={playlist._id}
-              onClick={() => addToPlaylist(playlist._id, video, videoDispatch)}
+              onClick={() =>
+                videoInPlaylist(playlist)
+                  ? Toast({ type: "error", message: "Video exists" })
+                  : addToPlaylist(playlist._id, video, videoDispatch)
+              }
             >
               <label className="playlist">
-                <AiFillPlusCircle />
+                {videoInPlaylist(playlist) ? (
+                  <AiFillCheckCircle className="check-icon" />
+                ) : (
+                  <AiFillPlusCircle className="circle-icon" />
+                )}
 
                 {playlist.title}
               </label>

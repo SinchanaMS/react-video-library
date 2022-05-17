@@ -105,7 +105,7 @@
 
 .category-list.dark,
 .history-list.dark,
-.history-list.dark button {
+.history-list.dark .clear-history {
   background-color: var(--DARK-THEME-BG);
   color: var(--DARK-THEME-TEXT);
 }
@@ -141,7 +141,7 @@
   margin-right: 2px;
 }
 
-.history-list button {
+.history-list .clear-history {
   align-self: flex-end;
   padding: 4px 10px;
   border-radius: 4px;
@@ -158,4 +158,9 @@
   right: 15px;
   font-size: 30px;
   color: var(--DELETE-BTN);
+}
+
+.category.active {
+  background-color: var(--DARK-THEME-TEXT);
+  color: black;
 }

@@ -34,3 +34,14 @@
   width: 100%;
   margin: auto;
 }
+
+.playlist-videos {
+  position: relative;
+}
+
+.delete-video {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+}

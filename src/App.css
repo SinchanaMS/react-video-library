@@ -20,6 +20,7 @@
   --DIALOG-TEXT: #000000;
   --DIALOG-HOVER-BG: #cbc8c8;
   --DELETE-BTN: #8d8888;
+  --CHECK-ICON-BG: #628d62;
 }
 
 body::-webkit-scrollbar-thumb {
