@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   padding: 7px;
-  background-color: var(--LIGHT-NAV-BG);
+  background-color: var(--CARD-LIGHT);
   z-index: 1;
 }
 
@@ -36,7 +36,7 @@
 
 .search-input {
   padding: 4px;
-  width: 30rem;
+  min-width: 25rem;
   border: thin solid var(--DEFAULT-GREY);
   border-radius: 4px;
   background: var(--SEARCH-BAR-BG);
@@ -55,7 +55,7 @@
 
 .header-ctas {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
   margin-right: 1rem;
 }

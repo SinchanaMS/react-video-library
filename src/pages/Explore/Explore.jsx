@@ -1,5 +1,4 @@
 import CategoryList from "components/CategoryList";
-import Sidebar from "components/Sidebar";
 import VideoCard from "components/VideoCard";
 import { useVideo, useTheme } from "contexts/contexts";
 import "styles/videolisting.css";
@@ -10,7 +9,6 @@ export default function Explore() {
 
   return (
     <div className="main-content">
-      <Sidebar />
       <div
         className={theme === "light" ? "explore-videos" : "explore-videos dark"}
       >

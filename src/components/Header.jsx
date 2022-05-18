@@ -3,7 +3,7 @@ import {
   MdPlayArrow,
   MdNightlightRound,
   MdWbSunny,
-  MdMenu,
+  // MdMenu,
 } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth, useTheme } from "contexts/contexts";
@@ -17,9 +17,9 @@ export default function Header() {
   return (
     <div className={theme === "light" ? "header" : "header dark"}>
       <div className="main-logo">
-        <div className="side-nav">
+        {/* <div className="side-nav">
           <MdMenu className="menu" />
-        </div>
+        </div> */}
         <MdPlayArrow className="brand-logo" />
         <Link to="/" className="p-lg brandname">
           brandName

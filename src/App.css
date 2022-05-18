@@ -3,10 +3,13 @@
 :root {
   --CARD-LIGHT: #f0eded;
   --CARD-DARK: #202020;
+  --CARD-DARK: #2b2a2a;
   --DARK-THEME-BG: #2b2a2a;
+  --DARK-THEME-BG: #202020;
   --DARK-THEME-TEXT: #e9e6e6;
   --DARK-NAV-BG: #202020;
   --LIGHT-NAV-BG: #f5f1f1;
+  --LIGHT-NAV-BG: #fffefe;
   --CTAS-LIGHT: #3b3939;
   --CTAS-DARK: #ded6d6;
   --BRAND-LOGO-BG: #b7caca;
@@ -49,3 +52,9 @@ body::-webkit-scrollbar {
   height: 7px;
   background: var(--DARK-THEME-BG);
 }
+
+/* @media (max-width: 810px) {
+  .sidebar {
+    display: none;
+  }
+} */
