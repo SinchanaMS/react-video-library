@@ -11,7 +11,7 @@
 }
 
 .sidebar.dark {
-  background-color: var(--DARK-NAV-BG);
+  background-color: var(--DARK-THEME-BG);
 }
 
 .dark .sidebar-links {
@@ -43,10 +43,9 @@
     flex-direction: row;
     top: auto;
     bottom: 0px;
-    min-width: 100vw;
-    margin: auto;
+    min-width: 100%;
     z-index: 1;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: fit-content;
     padding: 0px;
     gap: 1rem;
@@ -63,9 +62,5 @@
     justify-content: center;
     padding: 0px 10px;
     max-height: 3rem;
-  }
-
-  .video-list {
-    margin-left: 1rem;
   }
 }

@@ -138,12 +138,14 @@
 }
 
 .history-list .video-list {
-  margin: 0;
+  margin: 0 auto;
   padding-left: 0;
+  width: 100%;
 }
 
 .history-list .video-list .video-card {
   margin-right: 2px;
+  margin: 0 auto 10px;
 }
 
 .history-list .clear-history {
@@ -155,12 +157,13 @@
 
 .history-video {
   position: relative;
+  margin: 0 auto;
 }
 
 .history-list .delete-btn {
   position: absolute;
   top: 15px;
-  right: 40px;
+  right: 10px;
   font-size: 30px;
 }
 
@@ -172,7 +175,25 @@
 @media (max-width: 810px) {
   .video-list {
     width: 100vw;
+    margin: 3rem auto;
+  }
+
+  .history-list {
+    width: 100vw;
     margin: auto;
+    min-height: 95vh;
+  }
+
+  .history-list .video-list {
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .history-list .delete-btn {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    font-size: 30px;
   }
 }
 
@@ -195,8 +216,28 @@
 }
 
 @media (max-width: 480px) {
+  .video-list {
+    margin: 3rem auto;
+  }
+
   .video-card {
     width: auto;
     min-height: auto;
+  }
+
+  .category-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .history-list {
+    margin: auto;
+    height: 95vh;
+  }
+
+  .history-list .video-list {
+    margin: 0 auto;
+    min-height: calc(100vh - 3rem);
+    width: 100%;
   }
 }

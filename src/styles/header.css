@@ -61,7 +61,7 @@
 }
 
 .header.dark {
-  background-color: var(--DARK-NAV-BG);
+  background-color: var(--DARK-THEME-BG);
 }
 
 .header.dark .brandname,
@@ -78,4 +78,85 @@
 
 .menu {
   font-size: 24px;
+}
+
+.user-dialog {
+  display: none;
+}
+
+@media (min-width: 552px) and (max-width: 768px) {
+  .brandname {
+    display: none;
+  }
+
+  .search-input {
+    min-width: 15rem;
+    margin: auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 810px) {
+  .search-input {
+    min-width: 15rem;
+    margin: auto;
+  }
+}
+
+@media (max-width: 551px) {
+  .brandname {
+    display: none;
+  }
+
+  .search-input {
+    min-width: 10rem;
+    margin: auto;
+  }
+
+  .header-ctas {
+    display: none;
+  }
+
+  .user-dialog {
+    display: block;
+    position: relative;
+    padding-right: 10px;
+  }
+
+  .user-icon {
+    font-size: 24px;
+  }
+
+  .dark .user-dialog {
+    color: var(--CTAS-DARK);
+  }
+
+  .dark .user-options {
+    background-color: var(--CTAS-DARK);
+    border: none;
+  }
+
+  .user-options {
+    position: absolute;
+    right: 0;
+    top: 1.5rem;
+    width: 8rem;
+    background-color: var(--LIGHT-NAV-BG);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--CTAS-LIGHT);
+    border: thin solid var(--DELETE-BTN);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .user-options-ctas {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .theme {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }

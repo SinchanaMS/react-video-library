@@ -3,23 +3,21 @@ import {
   MdPlayArrow,
   MdNightlightRound,
   MdWbSunny,
-  // MdMenu,
 } from "react-icons/md";
+import { AiOutlineUser } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth, useTheme } from "contexts/contexts";
 import "styles/header.css";
+import { useState } from "react";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
   const { isLoggedIn, logoutHandler } = useAuth();
   const location = useLocation();
-
+  const [showUserDialog, setShowUserDialog] = useState(false);
   return (
     <div className={theme === "light" ? "header" : "header dark"}>
       <div className="main-logo">
-        {/* <div className="side-nav">
-          <MdMenu className="menu" />
-        </div> */}
         <MdPlayArrow className="brand-logo" />
         <Link to="/" className="p-lg brandname">
           brandName
@@ -61,6 +59,57 @@ export default function Header() {
             onClick={() => setTheme("dark")}
             className="theme-icon"
           />
+        )}
+      </div>
+
+      <div className="user-dialog">
+        <AiOutlineUser
+          className="user-icon"
+          onClick={() => setShowUserDialog((prev) => !prev)}
+        />
+        {showUserDialog && (
+          <div className="user-options">
+            <div className="user-options-ctas">
+              {isLoggedIn ? (
+                <div className="user-options-ctas">
+                  <Link
+                    to="/"
+                    onClick={() => logoutHandler()}
+                    className="user-options-ctas"
+                  >
+                    Logout
+                  </Link>
+                </div>
+              ) : (
+                <div className="user-options-ctas">
+                  <Link
+                    to="/login"
+                    className="user-options-ctas"
+                    state={{ from: location }}
+                  >
+                    Login
+                  </Link>
+                  <Link to="/signup" className="user-options-ctas">
+                    Sign Up
+                  </Link>
+                </div>
+              )}
+              <p className="theme">
+                Theme :
+                {theme === "dark" ? (
+                  <MdWbSunny
+                    onClick={() => setTheme("light")}
+                    className="theme-icon"
+                  />
+                ) : (
+                  <MdNightlightRound
+                    onClick={() => setTheme("dark")}
+                    className="theme-icon"
+                  />
+                )}
+              </p>
+            </div>
+          </div>
         )}
       </div>
     </div>
