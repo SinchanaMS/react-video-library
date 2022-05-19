@@ -8,6 +8,7 @@
   padding: 7px;
   background-color: var(--CARD-LIGHT);
   z-index: 1;
+  height: 3rem;
 }
 
 .main-logo {
@@ -17,10 +18,14 @@
 }
 
 .brand-logo {
-  font-size: 36px;
-  background-color: var(--BRAND-LOGO-BG);
   border-radius: 7px;
-  margin: 4px;
+  margin: auto;
+  height: 40px;
+}
+
+.brandname {
+  letter-spacing: 2px;
+  font-weight: 500;
 }
 
 .brandname,

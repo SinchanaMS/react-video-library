@@ -1,14 +1,10 @@
-import {
-  MdSearch,
-  MdPlayArrow,
-  MdNightlightRound,
-  MdWbSunny,
-} from "react-icons/md";
+import { MdSearch, MdNightlightRound, MdWbSunny } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth, useTheme } from "contexts/contexts";
 import "styles/header.css";
 import { useState } from "react";
+import logo from "assets/logo.png";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
@@ -18,9 +14,9 @@ export default function Header() {
   return (
     <div className={theme === "light" ? "header" : "header dark"}>
       <div className="main-logo">
-        <MdPlayArrow className="brand-logo" />
+        <img src={logo} alt="brand-logo" className="brand-logo" />
         <Link to="/" className="p-lg brandname">
-          brandName
+          Percipio
         </Link>
       </div>
       <div className="search-bar">
