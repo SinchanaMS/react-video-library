@@ -1,11 +1,25 @@
-.login-container {
-  background: var(--CARD-BG);
+.page-body {
+  background-color: var(--LIGHT-NAV-BG);
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: max-content;
-  width: fit-content;
+}
+
+.page-body.dark {
+  background-color: var(--DARK-THEME-BG);
+}
+
+.login-container {
+  background: var(--CTAS-DARK);
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
   border-radius: 5px;
   border: none;
-  margin: 7rem auto;
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .container-title {
@@ -55,6 +69,7 @@ input[type="checkbox"]:hover {
 
 .auth-btns {
   display: flex;
+  justify-content: center;
   width: 100%;
 }
 
@@ -87,4 +102,44 @@ input[type="checkbox"]:hover {
 
 .toggle-login-pwd:hover {
   cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .page-body {
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+  }
+
+  .login-container {
+    max-width: 75%;
+    font-size: small;
+    padding: 1rem;
+  }
+
+  .container-title {
+    margin-bottom: none;
+  }
+
+  .auth-opts {
+    font-size: small;
+  }
+
+  .auth-btns {
+    gap: 5px;
+    width: 100%;
+  }
+
+  .link-btn-outline.login-btn {
+    min-width: 6.5rem;
+    padding: 5px 2px;
+  }
+
+  .new-user Link {
+    font-size: small;
+  }
+
+  .toggle-login-pwd {
+    top: 50%;
+  }
 }

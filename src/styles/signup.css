@@ -1,11 +1,10 @@
 .sign-up-container {
-  background: var(--CARD-BG);
-  min-width: max-content;
-  max-width: 30%;
+  background: var(--CTAS-DARK);
+  min-width: 30%;
   border-radius: 5px;
   border: none;
   margin: 3rem auto;
-  padding: 3rem 3rem 1rem 3rem;
+  padding: 1rem 2rem 1rem;
 }
 
 .container-title {
@@ -24,7 +23,8 @@
 }
 
 .new-user-form input[type="text"],
-[type="password"] {
+[type="password"],
+[type="email"] {
   max-width: 100%;
   min-width: 40%;
   border: thin solid var(--DEFAULT-GREY);

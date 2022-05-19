@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "styles/login.css";
+import { useTheme } from "contexts/ThemeContext";
 
 export default function Login() {
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -45,8 +47,8 @@ export default function Login() {
   };
 
   return (
-    <div className="page-body">
-      <section className="login-container shadow">
+    <div className={theme === "light" ? "page-body" : "page-body dark"}>
+      <section className="login-container">
         <h2 className="container-title">Login</h2>
         <form className="login-details" onSubmit={handleLogin}>
           <div className="labelled-input label-top username">
@@ -99,7 +101,7 @@ export default function Login() {
         <hr />
         <br />
         <div className="new-user">
-          <Link to="/signup" className="link-in-btn p-lg">
+          <Link to="/signup" className="link-in-btn">
             Create New Account
           </Link>
         </div>
