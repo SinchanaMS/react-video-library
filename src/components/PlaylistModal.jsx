@@ -8,7 +8,7 @@ import {
 import { addToPlaylist, createPlaylist } from "router/utils/HelperFunctions";
 import { useVideo, useTheme } from "contexts/contexts";
 import { usePlaylist } from "contexts/PlaylistContext";
-import Toast from "./Toast";
+import toast from "react-hot-toast";
 
 export default function PlaylistModal({ video }) {
   const { playlist, setPlaylist, setShowPlaylistModal } = usePlaylist();
@@ -43,7 +43,7 @@ export default function PlaylistModal({ video }) {
               key={playlist._id}
               onClick={() =>
                 videoInPlaylist(playlist)
-                  ? Toast({ type: "error", message: "Video exists" })
+                  ? toast.error("Video already exists in the playlist")
                   : addToPlaylist(playlist._id, video, videoDispatch)
               }
             >

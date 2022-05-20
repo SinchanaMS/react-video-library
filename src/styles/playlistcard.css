@@ -41,7 +41,7 @@
 
 .delete-video {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 30px;
+  top: 1.25rem;
+  right: 2.5rem;
+  font-size: 1.875rem;
 }

@@ -55,18 +55,18 @@ export default function VideoPage() {
   const { showPlaylistModal, setShowPlaylistModal } = usePlaylist();
 
   return (
-    <div
-      className={
-        theme === "light" ? "video-list player" : "video-list dark player"
-      }
-    >
-      <div className={theme === "light" ? "video-player" : "video-player dark"}>
+    <div className={theme === "light" ? "player" : "dark player"}>
+      <div
+        className={
+          theme === "light" ? "video-player shadow" : "video-player dark"
+        }
+      >
         <div>
           <ReactPlayer
             className="react-player-card"
             controls={true}
-            width="1024px"
-            height="575px"
+            width="var(--PLAYER-WIDTH)"
+            height="var(--PLAYER-HEIGHT)"
             playing={true}
             onReady={isLoggedIn ? () => addToHistory(video, videoDispatch) : ""}
             url={`https://www.youtube.com/watch?v=${videoId}`}

@@ -1,19 +1,23 @@
 .main-content {
   display: flex;
+  min-width: 20rem;
 }
 
 .video-list {
-  display: flex;
-  flex-wrap: wrap;
+  width: calc(100vw - 6.9rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   padding: 1rem;
   margin-top: 3rem;
-  margin-left: 9.5rem;
+  margin-left: 6.5rem;
   min-height: 100vh;
+  background-color: var(--CARD-LIGHT);
 }
 
 .explore-videos {
   display: flex;
   flex-direction: column;
+  background-color: var(--CARD-LIGHT);
 }
 
 .explore-videos.dark,
@@ -115,7 +119,7 @@
 }
 
 .category {
-  border: 1.8px solid var(--DARK-THEME-TEXT);
+  border: 1.8px solid var(--CTAS-DARK);
   padding: 3px 10px;
   border-radius: 2rem;
 }
@@ -126,19 +130,21 @@
 }
 
 .history-list {
-  margin: 3.5rem auto 0 9.5rem;
+  margin: 3rem auto 0 6.5rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
 }
 
 .history-list .video-list {
-  margin: 0;
+  margin: 0 auto;
   padding-left: 0;
+  width: 100%;
 }
 
 .history-list .video-list .video-card {
   margin-right: 2px;
+  margin: 0 auto 10px;
 }
 
 .history-list .clear-history {
@@ -150,17 +156,97 @@
 
 .history-video {
   position: relative;
+  margin: 0 auto;
 }
 
 .history-list .delete-btn {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 10px;
   font-size: 30px;
-  color: var(--DELETE-BTN);
 }
 
 .category.active {
-  background-color: var(--DARK-THEME-TEXT);
+  background-color: var(--CTAS-DARK);
   color: black;
+}
+
+@media (max-width: 1496px) {
+  .explore-videos {
+    min-width: 100vw;
+  }
+
+  .video-list {
+    width: auto;
+  }
+}
+
+@media (max-width: 810px) {
+  .video-list {
+    width: 100vw;
+    margin: 3rem auto;
+  }
+
+  .history-list {
+    width: 100vw;
+    margin: 3rem auto;
+    min-height: 95vh;
+  }
+
+  .history-list .video-list {
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .history-list .delete-btn {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 690px) {
+  .video-list {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: auto;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .category-list {
+    margin-top: 5rem;
+    display: flex;
+    margin: 5rem auto 0;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-list {
+    margin: 3rem auto;
+  }
+
+  .video-card {
+    width: auto;
+    min-height: auto;
+  }
+
+  .category-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .history-list {
+    margin: 3rem auto;
+    height: 95vh;
+  }
+
+  .history-list .video-list {
+    margin: 0 auto;
+    min-height: calc(100vh - 3rem);
+    width: 100%;
+  }
 }
