@@ -7,7 +7,14 @@ import {
   useState,
 } from "react";
 import { videoReducer } from "reducers/videoReducer";
-import { categories, helperFunctions } from "router/utils/HelperFunctions";
+import {
+  categories,
+  compose,
+  filterByCategory,
+  helperFunctions,
+  searchFor,
+  sortBy,
+} from "router/utils/HelperFunctions";
 
 const VideoContext = createContext();
 
@@ -17,13 +24,15 @@ const initialData = {
   history: [],
   categoryList: [],
   playlists: [],
+  category: "All",
+  sortBy: "",
+  searchFor: "",
 };
 
 const VideoProvider = ({ children }) => {
   const [videoData, videoDispatch] = useReducer(videoReducer, initialData);
   const [allVideos, setAllVideos] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
-  const [filteredVideos, setFilteredVideos] = useState(allVideos);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -31,7 +40,6 @@ const VideoProvider = ({ children }) => {
         const response = await axios.get("/api/videos");
         if (response.status === 200) {
           setAllVideos(response.data.videos);
-          setFilteredVideos(response.data.videos);
         }
       } catch (error) {
         console.log(error);
@@ -44,20 +52,12 @@ const VideoProvider = ({ children }) => {
     categories(videoDispatch);
   }, []);
 
-  const randomVideos = (allVideos) => {
-    allVideos.sort(() => Math.random() - 0.5);
-  };
-  useEffect(() => {
-    randomVideos(allVideos);
-  }, [filteredVideos]);
-
-  const filterByCategory = (category, allVideos) => {
-    return category === "All"
-      ? setFilteredVideos(allVideos)
-      : setFilteredVideos(
-          allVideos.filter((video) => video.category === category)
-        );
-  };
+  const filteredVideos = compose(
+    videoData,
+    filterByCategory,
+    sortBy,
+    searchFor
+  )(allVideos);
 
   return (
     <VideoContext.Provider
@@ -69,7 +69,6 @@ const VideoProvider = ({ children }) => {
         filteredVideos,
         videoDispatch,
         setShowOptions,
-        filterByCategory,
       }}
     >
       {children}

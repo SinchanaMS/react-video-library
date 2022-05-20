@@ -7,6 +7,7 @@
   width: calc(100vw - 6.9rem);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  align-content: flex-start;
   padding: 1rem;
   margin-top: 3rem;
   margin-left: 6.5rem;
@@ -38,7 +39,7 @@
   width: 20rem;
   margin: 8px;
   min-height: 17.75rem;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   background-color: var(--CARD-LIGHT);
   overflow: hidden;
   position: relative;
@@ -63,11 +64,15 @@
 
 .more-options {
   position: absolute;
-  right: 10px;
+  right: 12px;
   bottom: 5px;
   align-self: flex-end;
   padding: 5px;
   font-size: 1.75rem;
+}
+
+.more-options:hover {
+  cursor: pointer;
 }
 
 .options-dialog.hide {
@@ -76,7 +81,7 @@
 
 .options-dialog {
   position: absolute;
-  right: 1.25rem;
+  right: 2rem;
   bottom: 3px;
   width: fit-content;
   background-color: var(--CARD-LIGHT);
@@ -93,6 +98,9 @@
   padding: 0 7px;
   border-radius: 4px;
   border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--CARD-DARK);
 }
 
 .options:hover {
@@ -171,6 +179,33 @@
   color: black;
 }
 
+.error.video-list {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+  max-height: calc(100vh - 3rem);
+  min-height: calc(100vh - 3rem);
+  min-width: calc(100vw - 6.5rem);
+}
+
+.error-page {
+  margin: auto;
+}
+
+.empty-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, -50%);
+  height: 50%;
+  width: 50%;
+  grid-column: 2 / span 2;
+}
+
+.empty-page img {
+  height: 100%;
+}
+
 @media (max-width: 1496px) {
   .explore-videos {
     min-width: 100vw;
@@ -203,6 +238,16 @@
     top: 15px;
     right: 30px;
     font-size: 30px;
+  }
+
+  .empty-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+    width: 50%;
+    grid-column: 2 / span 2;
   }
 }
 

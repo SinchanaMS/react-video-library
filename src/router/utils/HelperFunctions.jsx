@@ -270,6 +270,29 @@ export const deleteFromPlaylist = async (playlist, video, videoDispatch) => {
   }
 };
 
+export const filterByCategory = (state, data) =>
+  state?.category === "All"
+    ? data
+    : data?.filter((video) => video.category === state.category);
+
+export const sortBy = (state, data) =>
+  state.sortBy === "Latest"
+    ? [...data].sort((a, b) => new Date(b.published) - new Date(a.published))
+    : data;
+
+export const searchFor = (state, data) =>
+  data?.filter(
+    (video) =>
+      video?.title.toLowerCase().includes(state.searchFor.toLowerCase()) ||
+      video?.creator.toLowerCase().includes(state.searchFor.toLowerCase())
+  );
+
+export const compose =
+  (state, ...functions) =>
+  (data) => {
+    return functions.reduce((acc, curr) => curr(state, acc), data);
+  };
+
 export const helperFunctions = {
   addToWatchlist,
   removeFromWatchlist,
@@ -283,4 +306,8 @@ export const helperFunctions = {
   deletePlaylist,
   addToPlaylist,
   deleteFromPlaylist,
+  filterByCategory,
+  sortBy,
+  searchFor,
+  compose,
 };

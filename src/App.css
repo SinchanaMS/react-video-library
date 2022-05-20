@@ -22,6 +22,10 @@
   --CHECK-ICON-BG: #628d62;
 }
 
+body {
+  height: auto;
+}
+
 body::-webkit-scrollbar-thumb {
   background: var(--CARD-DARK);
 }
@@ -31,20 +35,38 @@ body::-webkit-scrollbar {
   background: var(--DARK-THEME-BG);
 }
 
-.suggestions::-webkit-scrollbar-thumb {
+.dark .suggestions::-webkit-scrollbar-thumb {
   background: var(--CARD-DARK);
+}
+
+.dark .suggestions::-webkit-scrollbar {
+  height: 7px;
+  background: var(--DARK-THEME-BG);
+}
+
+.dark .videos::-webkit-scrollbar-thumb {
+  background: var(--CARD-DARK);
+}
+
+.dark .videos::-webkit-scrollbar {
+  height: 7px;
+  background: var(--DARK-THEME-BG);
 }
 
 .suggestions::-webkit-scrollbar {
   height: 7px;
-  background: var(--DARK-THEME-BG);
+  background: var(--CARD-LIGHT);
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  background: var(--CTAS-DARK);
 }
 
 .videos::-webkit-scrollbar-thumb {
-  background: var(--CARD-DARK);
+  background: var(--CTAS-DARK);
 }
 
 .videos::-webkit-scrollbar {
   height: 7px;
-  background: var(--DARK-THEME-BG);
+  background: var(--CARD-LIGHT);
 }

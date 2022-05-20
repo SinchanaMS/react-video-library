@@ -27,7 +27,12 @@ export function videoReducer(state, action) {
       );
       return { ...state, playlists: updatedPlaylist };
     }
-
+    case "SET_CATEGORY":
+      return { ...state, category: action.payload };
+    case "SORT_BY":
+      return { ...state, sortBy: action.payload };
+    case "SEARCH_FOR":
+      return { ...state, searchFor: action.payload };
     default:
       return state;
   }

@@ -1,12 +1,13 @@
-import { MdSearch, MdNightlightRound, MdWbSunny } from "react-icons/md";
+import { MdNightlightRound, MdWbSunny } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth, useTheme } from "contexts/contexts";
+import { useAuth, useTheme, useVideo } from "contexts/contexts";
 import "styles/header.css";
 import { useState } from "react";
 import logo from "assets/logo.png";
 
 export default function Header() {
+  const { videoDispatch } = useVideo();
   const { theme, setTheme } = useTheme();
   const { isLoggedIn, logoutHandler } = useAuth();
   const location = useLocation();
@@ -20,8 +21,14 @@ export default function Header() {
         </Link>
       </div>
       <div className="search-bar">
-        <input type="text" placeholder="Search" className="search-input" />
-        <MdSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search"
+          className="search-input"
+          onChange={(e) =>
+            videoDispatch({ type: "SEARCH_FOR", payload: e.target.value })
+          }
+        />
       </div>
       <div className="header-ctas">
         {isLoggedIn ? (

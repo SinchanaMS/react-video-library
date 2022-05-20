@@ -60,14 +60,14 @@ export default function VideoCard({ video }) {
             >
               {inWatchList ? (
                 <button
-                  className="options p-sm"
+                  className="options"
                   onClick={() => removeFromWatchlist(video, videoDispatch)}
                 >
                   <MdWatchLater /> Remove from Watch Later
                 </button>
               ) : (
                 <button
-                  className="options p-sm"
+                  className="options"
                   onClick={() => addToWatchlist(video, videoDispatch)}
                 >
                   <MdOutlineWatchLater />
@@ -76,14 +76,14 @@ export default function VideoCard({ video }) {
               )}
               {inLikedList ? (
                 <button
-                  className="options p-sm"
+                  className="options"
                   onClick={() => removeFromLikedList(video, videoDispatch)}
                 >
                   <IoHeartSharp /> Remove from Liked Videos
                 </button>
               ) : (
                 <button
-                  className="options p-sm"
+                  className="options"
                   onClick={() => addToLikedList(video, videoDispatch)}
                 >
                   <IoHeartOutline />

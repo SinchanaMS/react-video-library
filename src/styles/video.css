@@ -126,7 +126,13 @@ html {
   }
 
   .player-ctas {
-    display: none;
+    align-self: flex-end;
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  .player-options {
+    font-size: 18px;
   }
 
   .videocard .video-card .creator-dp {
