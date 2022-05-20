@@ -22,6 +22,10 @@
   --CHECK-ICON-BG: #628d62;
 }
 
+body {
+  height: auto;
+}
+
 body::-webkit-scrollbar-thumb {
   background: var(--CARD-DARK);
 }
