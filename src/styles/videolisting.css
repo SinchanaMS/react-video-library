@@ -130,7 +130,7 @@
 }
 
 .history-list {
-  margin: 3.5rem auto 0 6.5rem;
+  margin: 3rem auto 0 6.5rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -189,7 +189,7 @@
 
   .history-list {
     width: 100vw;
-    margin: auto;
+    margin: 3rem auto;
     min-height: 95vh;
   }
 
@@ -240,7 +240,7 @@
   }
 
   .history-list {
-    margin: auto;
+    margin: 3rem auto;
     height: 95vh;
   }
 

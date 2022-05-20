@@ -1,5 +1,4 @@
 import {
-  MdHome,
   MdExplore,
   MdHistory,
   MdPlaylistPlay,
@@ -15,10 +14,6 @@ export default function Sidebar() {
   return (
     <nav className={theme === "light" ? "sidebar" : "sidebar dark"}>
       <NavLink className="sidebar-links" to="/">
-        <MdHome className="sidebar-icons" />
-        <p className="sidebar-pages p-sm">Home</p>
-      </NavLink>
-      <NavLink className="sidebar-links" to="/explore">
         <MdExplore className="sidebar-icons" />
         <p className="sidebar-pages p-sm">Explore</p>
       </NavLink>

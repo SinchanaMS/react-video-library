@@ -2,6 +2,7 @@
   background-color: var(--CARD-LIGHT);
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 2rem;
   position: fixed;
   top: 3rem;

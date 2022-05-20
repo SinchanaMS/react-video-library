@@ -9,10 +9,8 @@ import Playlist from "./Playlist/Playlist";
 import WatchLater from "./WatchLater/WatchLater";
 import VideoPage from "./VideoPage/VideoPage";
 import PlaylistPage from "./PlaylistPage/PlaylistPage";
-import Home from "./Home/Home";
 
 export {
-  Home,
   Explore,
   History,
   Login,
