@@ -10,12 +10,12 @@ export default function Liked() {
 
   return (
     <div className={theme === "light" ? "video-list" : "video-list dark"}>
-      {likedList.length === 0 ? (
+      {likedList?.length === 0 ? (
         <div className="empty-page">
           <img src={empty} alt="empty-page" />
         </div>
       ) : (
-        likedList.map((video) => <VideoCard video={video} key={video._id} />)
+        likedList?.map((video) => <VideoCard video={video} key={video._id} />)
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { MdSearch, MdNightlightRound, MdWbSunny } from "react-icons/md";
+import { MdNightlightRound, MdWbSunny } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth, useTheme, useVideo } from "contexts/contexts";
@@ -29,7 +29,6 @@ export default function Header() {
             videoDispatch({ type: "SEARCH_FOR", payload: e.target.value })
           }
         />
-        <MdSearch className="search-icon" />
       </div>
       <div className="header-ctas">
         {isLoggedIn ? (

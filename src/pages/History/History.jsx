@@ -27,7 +27,7 @@ export default function History() {
             <img src={empty} alt="empty-page" />
           </div>
         ) : (
-          history.map((video) => (
+          history?.map((video) => (
             <div className="history-video" key={video._id}>
               <VideoCard video={video} key={video._id} />
               <AiFillCloseCircle

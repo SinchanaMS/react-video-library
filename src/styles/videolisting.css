@@ -64,11 +64,15 @@
 
 .more-options {
   position: absolute;
-  right: 10px;
+  right: 12px;
   bottom: 5px;
   align-self: flex-end;
   padding: 5px;
   font-size: 1.75rem;
+}
+
+.more-options:hover {
+  cursor: pointer;
 }
 
 .options-dialog.hide {
@@ -77,7 +81,7 @@
 
 .options-dialog {
   position: absolute;
-  right: 1.25rem;
+  right: 2rem;
   bottom: 3px;
   width: fit-content;
   background-color: var(--CARD-LIGHT);
@@ -94,6 +98,9 @@
   padding: 0 7px;
   border-radius: 4px;
   border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--CARD-DARK);
 }
 
 .options:hover {

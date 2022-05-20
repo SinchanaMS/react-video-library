@@ -120,7 +120,7 @@ export default function VideoPage() {
       <div className="suggestions">
         <h3>View similar</h3>
         <ul className="videos">
-          {suggestedList.map((video) => (
+          {suggestedList?.map((video) => (
             <li className="videocard" key={video?._id}>
               <VideoCard video={video} key={video?._id} />
             </li>
@@ -131,7 +131,7 @@ export default function VideoPage() {
       <div className="suggestions">
         <h3>Watch more</h3>
         <ul className="videos">
-          {filteredVideos.map((video) => (
+          {filteredVideos?.map((video) => (
             <li className="videocard" key={video?._id}>
               <VideoCard video={video} key={video?._id} />
             </li>
