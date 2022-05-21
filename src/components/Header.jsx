@@ -14,12 +14,12 @@ export default function Header() {
   const [showUserDialog, setShowUserDialog] = useState(false);
   return (
     <div className={theme === "light" ? "header" : "header dark"}>
-      <div className="main-logo">
-        <img src={logo} alt="brand-logo" className="brand-logo" />
-        <Link to="/" className="p-lg brandname">
-          Percipio
-        </Link>
-      </div>
+      <Link to="/">
+        <div className="main-logo">
+          <img src={logo} alt="brand-logo" className="brand-logo" />
+          <p className="p-lg brandname">Percipio</p>
+        </div>
+      </Link>
       <div className="search-bar">
         <input
           type="text"
@@ -84,7 +84,7 @@ export default function Header() {
                   </Link>
                 </div>
               ) : (
-                <div className="user-options-ctas">
+                <div className="">
                   <Link
                     to="/login"
                     className="user-options-ctas"

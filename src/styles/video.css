@@ -98,6 +98,10 @@ html {
     width: 15rem;
     word-wrap: break-word;
   }
+
+  .videocard .video-card .creator-dp {
+    display: none;
+  }
 }
 
 @media (max-width: 810px) {

@@ -117,9 +117,6 @@ export const addToHistory = async (video, videoDispatch) => {
       videoDispatch({ type: "ADD_TO_HISTORY", payload: response.data.history });
     }
   } catch (error) {
-    if (error.response.status === 409) {
-      console.log(error.message);
-    } else toast.error("Oops! An error occurred.Try again later.");
     console.log(error.message);
   }
 };

@@ -14,7 +14,7 @@ export default function Login() {
   let lastLocation = location.state?.from?.pathname;
 
   const testUser = {
-    email: "theMarauders@gmail.com",
+    email: "testUser@gmail.com",
     password: "FortunaMajor",
   };
 
@@ -43,7 +43,7 @@ export default function Login() {
   };
 
   const guestLogin = () => {
-    sendLoginData(testUser);
+    setLoginData(testUser);
   };
 
   return (
@@ -57,6 +57,7 @@ export default function Login() {
               type="email"
               name="email"
               placeholder="jane.doe@email.com"
+              value={loginData.email}
               onChange={setUserData}
             />
           </div>
@@ -72,6 +73,7 @@ export default function Login() {
               type={showPwd ? "text" : "password"}
               name="password"
               placeholder="************"
+              value={loginData.password}
               onChange={setUserData}
             />
           </div>
