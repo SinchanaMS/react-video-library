@@ -86,23 +86,31 @@ export default function VideoPage() {
               {inWatchList ? (
                 <MdWatchLater
                   className="player-options p-sm"
-                  onClick={() => removeFromWatchlist(video, videoDispatch)}
+                  onClick={() =>
+                    removeFromWatchlist(video, userToken, videoDispatch)
+                  }
                 />
               ) : (
                 <MdOutlineWatchLater
                   className="player-options p-sm"
-                  onClick={() => addToWatchlist(video, videoDispatch)}
+                  onClick={() =>
+                    addToWatchlist(video, userToken, videoDispatch)
+                  }
                 />
               )}
               {inLikedList ? (
                 <IoHeartSharp
                   className="player-options p-sm"
-                  onClick={() => removeFromLikedList(video, videoDispatch)}
+                  onClick={() =>
+                    removeFromLikedList(video, userToken, videoDispatch)
+                  }
                 />
               ) : (
                 <IoHeartOutline
                   className="player-options p-sm"
-                  onClick={() => addToLikedList(video, videoDispatch)}
+                  onClick={() =>
+                    addToLikedList(video, userToken, videoDispatch)
+                  }
                 />
               )}
               <MdPlaylistPlay
