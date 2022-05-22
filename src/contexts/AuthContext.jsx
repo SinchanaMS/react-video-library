@@ -8,7 +8,10 @@ const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const userToken = localStorage.getItem("userToken");
   const navigate = useNavigate();
-
+  const testUser = {
+    email: "danielFelton@gmail.com",
+    password: "FortunaMajor",
+  };
   useEffect(() => {
     if (userToken) {
       setIsLoggedIn(true);
@@ -22,7 +25,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, logoutHandler }}>
+    <AuthContext.Provider
+      value={{ testUser, isLoggedIn, setIsLoggedIn, logoutHandler }}
+    >
       {children}
     </AuthContext.Provider>
   );

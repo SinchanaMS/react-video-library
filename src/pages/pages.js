@@ -9,6 +9,7 @@ import Playlist from "./Playlist/Playlist";
 import WatchLater from "./WatchLater/WatchLater";
 import VideoPage from "./VideoPage/VideoPage";
 import PlaylistPage from "./PlaylistPage/PlaylistPage";
+import UserProfile from "./UserProfile/UserProfile";
 
 export {
   Explore,
@@ -22,4 +23,5 @@ export {
   WatchLater,
   VideoPage,
   PlaylistPage,
+  UserProfile,
 };

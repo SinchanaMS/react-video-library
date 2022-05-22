@@ -11,14 +11,16 @@ import {
   WatchLater,
   VideoPage,
   PlaylistPage,
+  UserProfile,
 } from "pages/pages";
-import RequiresAuth from "./utils/RequiresAuth";
+import RequiresAuth from "../utils/RequiresAuth";
 
 export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Explore />} />
       <Route element={<RequiresAuth />}>
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/history" element={<History />} />
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/playlist/:playlistId" element={<PlaylistPage />} />

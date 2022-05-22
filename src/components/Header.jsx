@@ -13,7 +13,7 @@ export default function Header() {
   const location = useLocation();
   const [showUserDialog, setShowUserDialog] = useState(false);
   return (
-    <div className={theme === "light" ? "header" : "header dark"}>
+    <div className="header">
       <Link to="/">
         <div className="main-logo">
           <img src={logo} alt="brand-logo" className="brand-logo" />
@@ -30,90 +30,63 @@ export default function Header() {
           }
         />
       </div>
-      <div className="header-ctas">
-        {isLoggedIn ? (
-          <div className="header-ctas">
-            <Link
-              to="/"
-              onClick={() => logoutHandler()}
-              className="header-ctas"
-            >
-              Logout
-            </Link>
-          </div>
-        ) : (
-          <div className="header-ctas">
-            <Link
-              to="/login"
-              className="header-ctas"
-              state={{ from: location }}
-            >
-              Login
-            </Link>
-            <Link to="/signup" className="header-ctas">
-              Sign Up
-            </Link>
-          </div>
-        )}
-        {theme === "dark" ? (
-          <MdWbSunny onClick={() => setTheme("light")} className="theme-icon" />
-        ) : (
-          <MdNightlightRound
-            onClick={() => setTheme("dark")}
-            className="theme-icon"
-          />
-        )}
-      </div>
 
-      <div className="user-dialog">
-        <AiOutlineUser
-          className="user-icon"
-          onClick={() => setShowUserDialog((prev) => !prev)}
-        />
-        {showUserDialog && (
-          <div className="user-options">
+      <div className="header-ctas">
+        <p className="theme">
+          {theme === "dark" ? (
+            <MdWbSunny
+              onClick={() => setTheme("light")}
+              className="theme-icon"
+            />
+          ) : (
+            <MdNightlightRound
+              onClick={() => setTheme("dark")}
+              className="theme-icon"
+            />
+          )}
+        </p>
+        <div className="user-dialog">
+          <AiOutlineUser
+            className={showUserDialog ? "user-icon active" : "user-icon"}
+            onClick={() => setShowUserDialog((prev) => !prev)}
+          />
+
+          <div
+            className={
+              showUserDialog ? "user-options show" : "user-options hide"
+            }
+          >
             <div className="user-options-ctas">
-              {isLoggedIn ? (
-                <div className="user-options-ctas">
-                  <Link
-                    to="/"
-                    onClick={() => logoutHandler()}
-                    className="user-options-ctas"
-                  >
-                    Logout
-                  </Link>
-                </div>
-              ) : (
-                <div className="">
-                  <Link
-                    to="/login"
-                    className="user-options-ctas"
-                    state={{ from: location }}
-                  >
-                    Login
-                  </Link>
-                  <Link to="/signup" className="user-options-ctas">
-                    Sign Up
-                  </Link>
-                </div>
-              )}
-              <p className="theme">
-                Theme :
-                {theme === "dark" ? (
-                  <MdWbSunny
-                    onClick={() => setTheme("light")}
-                    className="theme-icon"
-                  />
-                ) : (
-                  <MdNightlightRound
-                    onClick={() => setTheme("dark")}
-                    className="theme-icon"
-                  />
-                )}
-              </p>
+              <Link to="/profile" className="user-actions">
+                Profile
+              </Link>
             </div>
+            {isLoggedIn ? (
+              <div className="user-options-ctas">
+                <Link
+                  to="/"
+                  onClick={() => logoutHandler()}
+                  className="user-actions"
+                >
+                  Logout
+                </Link>
+              </div>
+            ) : (
+              <div className="user-options-ctas">
+                <Link
+                  to="/login"
+                  className="user-actions"
+                  state={{ from: location }}
+                >
+                  Login
+                </Link>
+                <Link to="/signup" className="user-actions">
+                  Sign Up
+                </Link>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
