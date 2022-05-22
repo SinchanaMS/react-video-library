@@ -1,15 +1,14 @@
 import VideoCard from "components/VideoCard";
-import { useTheme, useVideo } from "contexts/contexts";
-import empty from "assets/emptyPL.svg";
+import { useVideo } from "contexts/contexts";
+import empty from "assets/videotape.svg";
 
 export default function Liked() {
   const {
     videoData: { likedList },
   } = useVideo();
-  const { theme } = useTheme();
 
   return (
-    <div className={theme === "light" ? "video-list" : "video-list dark"}>
+    <div className="video-list">
       {likedList?.length === 0 ? (
         <div className="empty-page">
           <img src={empty} alt="empty-page" />

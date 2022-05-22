@@ -2,21 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "styles/login.css";
-import { useTheme } from "contexts/ThemeContext";
+import { useAuth } from "contexts/contexts";
 
 export default function Login() {
-  const { theme } = useTheme();
+  const { testUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
   const [showPwd, setShowPwd] = useState(false);
-  let lastLocation = location.state?.from?.pathname;
-
-  const testUser = {
-    email: "testUser@gmail.com",
-    password: "FortunaMajor",
-  };
+  let lastLocation = location.state?.from?.pathname || "/";
 
   const setUserData = (e) => {
     const { name, value } = e.target;
@@ -27,7 +22,7 @@ export default function Login() {
     e.preventDefault();
     sendLoginData(loginData);
   };
-
+  console.log(lastLocation);
   const sendLoginData = async (loginData) => {
     try {
       const response = await axios.post("/api/auth/login", loginData);
@@ -47,7 +42,7 @@ export default function Login() {
   };
 
   return (
-    <div className={theme === "light" ? "page-body" : "page-body dark"}>
+    <div className="page-body">
       <section className="login-container">
         <h2 className="container-title">Login</h2>
         <form className="login-details" onSubmit={handleLogin}>

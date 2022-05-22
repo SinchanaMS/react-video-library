@@ -1,11 +1,10 @@
-import { useTheme, useVideo } from "contexts/contexts";
+import { useVideo } from "contexts/contexts";
 import { Link } from "react-router-dom";
-import emptyPlaylist from "assets/emptyPL.svg";
+import emptyPlaylist from "assets/videotape.svg";
 import { AiFillDelete } from "react-icons/ai";
 import "styles/playlistcard.css";
 
 export default function PlaylistCard({ playlist }) {
-  const { theme } = useTheme();
   const {
     helperFunctions: { deletePlaylist },
     videoDispatch,
@@ -13,10 +12,7 @@ export default function PlaylistCard({ playlist }) {
 
   return (
     <div>
-      <div
-        className={theme === "light" ? "playlist-card" : "playlist-card dark"}
-        key={playlist._id}
-      >
+      <div className="playlist-card" key={playlist._id}>
         <Link to={`/playlist/${playlist._id}`}>
           {playlist.videos.length > 0 ? (
             <img

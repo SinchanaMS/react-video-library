@@ -35,7 +35,7 @@ export default function VideoCard({ video }) {
   return (
     <div>
       <div
-        className={theme === "light" ? "video-card shadow" : "video-card dark"}
+        className={theme === "light" ? "video-card shadow" : "video-card"}
         key={id}
       >
         <Link to={`/video/${video.videoId}`}>
@@ -50,7 +50,7 @@ export default function VideoCard({ video }) {
           </div>
           <div>
             <MdMoreVert
-              className="more-options"
+              className={showOptions ? "more-options active" : "more-options"}
               onClick={() => setShowOptions((prev) => !prev)}
             />
             <div

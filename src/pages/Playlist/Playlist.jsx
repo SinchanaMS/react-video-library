@@ -1,17 +1,17 @@
 import PlaylistCard from "components/PlaylistCard";
-import { useTheme, useVideo } from "contexts/contexts";
-import empty from "assets/emptyPL.svg";
+import { useVideo } from "contexts/contexts";
+import emptyPL from "assets/videotape.svg";
 
 export default function Playlist() {
   const {
     videoData: { playlists },
   } = useVideo();
-  const { theme } = useTheme();
+
   return (
-    <ul className={theme === "light" ? "video-list" : "video-list dark"}>
+    <ul className="video-list">
       {playlists?.length === 0 ? (
         <div className="empty-page">
-          <img src={empty} alt="empty-page" />
+          <img src={emptyPL} alt="empty-page" />
         </div>
       ) : (
         playlists?.map((playlist) => (

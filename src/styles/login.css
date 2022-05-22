@@ -1,25 +1,22 @@
 .page-body {
-  background-color: var(--LIGHT-NAV-BG);
+  background-color: var(--PAGE-BG);
   min-height: 100vh;
+  min-width: max-content;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: max-content;
-}
-
-.page-body.dark {
-  background-color: var(--DARK-THEME-BG);
 }
 
 .login-container {
-  background: var(--CTAS-DARK);
+  background: var(--AUTH-CARD-BG);
   display: flex;
   flex-direction: column;
   max-width: 80%;
   border-radius: 5px;
   border: none;
   padding: 2rem;
+  color: var(--TEXT-DARK);
 }
 
 .container-title {
@@ -31,11 +28,11 @@
   max-width: 100%;
   min-width: 40%;
   width: fit-content;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  margin: auto;
 }
 
 .labelled-input {
@@ -45,8 +42,8 @@
 }
 
 .labelled-input.label-top input {
-  max-width: 100%;
   min-width: 40%;
+  max-width: 100%;
   width: 20rem;
   border: thin solid var(--DEFAULT-GREY);
   border-radius: 4px;
@@ -76,12 +73,14 @@ input[type="checkbox"]:hover {
 .link-btn-outline.login-btn {
   min-width: 8rem;
   margin: auto;
-  color: var(--PURE-WHITE);
+  background-color: var(--AUTH-CTAS);
+  color: var(--TEXT-DARK);
   border: none;
 }
 
 .login-btn:hover {
   cursor: pointer;
+  filter: brightness(0.9);
 }
 
 .new-user {

@@ -14,7 +14,7 @@ import {
   helperFunctions,
   searchFor,
   sortBy,
-} from "router/utils/HelperFunctions";
+} from "utils/HelperFunctions";
 
 const VideoContext = createContext();
 

@@ -1,13 +1,11 @@
 import axios from "axios";
-import { useTheme } from "contexts/contexts";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "styles/signup.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { theme } = useTheme();
   const [signUpError, setSignUpError] = useState("");
   const [signUpData, setSignUpData] = useState({
     firstName: "",
@@ -53,7 +51,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className={theme === "light" ? "page-body" : "page-body dark"}>
+    <div className="page-body">
       <section className="sign-up-container">
         <h2 className="container-title">Sign Up</h2>
         <form className="new-user-form" onSubmit={handleSubmit}>

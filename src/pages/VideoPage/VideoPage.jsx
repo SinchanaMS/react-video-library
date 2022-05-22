@@ -55,11 +55,9 @@ export default function VideoPage() {
   const { showPlaylistModal, setShowPlaylistModal } = usePlaylist();
 
   return (
-    <div className={theme === "light" ? "player" : "dark player"}>
+    <div className="player">
       <div
-        className={
-          theme === "light" ? "video-player shadow" : "video-player dark"
-        }
+        className={theme === "light" ? "video-player shadow" : "video-player"}
       >
         <div>
           <ReactPlayer

@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--PAGE-BG);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -11,12 +11,8 @@
   padding: 2rem 1rem 2rem 10px;
 }
 
-.sidebar.dark {
-  background-color: var(--DARK-THEME-BG);
-}
-
 .dark .sidebar-links {
-  color: var(--CTAS-DARK);
+  color: var(--CTAS);
 }
 
 .sidebar-links {
@@ -33,8 +29,8 @@
 }
 
 .sidebar-links.active {
-  background-color: var(--CTAS-DARK);
-  color: black;
+  background-color: var(--PRIMARY-BG);
+  color: var(--TEXT-DARK);
   border-radius: 1rem;
 }
 

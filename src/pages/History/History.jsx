@@ -1,11 +1,10 @@
 import VideoCard from "components/VideoCard";
-import { useTheme, useVideo } from "contexts/contexts";
+import { useVideo } from "contexts/contexts";
 import "styles/videolisting.css";
 import { AiFillCloseCircle } from "react-icons/ai";
-import empty from "assets/emptyPL.svg";
+import empty from "assets/videotape.svg";
 
 export default function History() {
-  const { theme } = useTheme();
   const {
     videoData,
     videoDispatch,
@@ -14,14 +13,14 @@ export default function History() {
   const { history } = videoData;
 
   return (
-    <div className={theme === "light" ? "history-list" : "history-list dark"}>
+    <div className="history-list">
       <button
         onClick={() => clearHistory(videoDispatch)}
         className="clear-history"
       >
         Clear History
       </button>
-      <div className={theme === "light" ? "video-list" : "video-list dark"}>
+      <div className="video-list">
         {history.length === 0 ? (
           <div className="empty-page">
             <img src={empty} alt="empty-page" />

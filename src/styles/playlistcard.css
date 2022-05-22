@@ -1,7 +1,7 @@
 .playlist-card {
   height: auto;
   width: 17rem;
-  background-color: var(--LIGHT-NAV-BG);
+  background-color: var(--PAGE-BG);
   color: var(--CARD-DARK);
   margin: 10px;
   border-radius: 1rem;
@@ -9,8 +9,8 @@
 }
 
 .playlist-card.dark {
-  background-color: var(--DARK-NAV-BG);
-  color: var(--DARK-THEME-TEXT);
+  background-color: var(--CARD-BG);
+  color: var(--THEME-TEXT);
 }
 
 .playlist-details {
@@ -21,7 +21,7 @@
 }
 
 .delete-icon {
-  font-size: 18px;
+  font-size: 1.12rem;
 }
 
 .delete-icon:hover {

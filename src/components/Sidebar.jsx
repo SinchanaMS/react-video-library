@@ -6,13 +6,11 @@ import {
   MdWatchLater,
 } from "react-icons/md";
 import { NavLink } from "react-router-dom";
-import { useTheme } from "contexts/ThemeContext";
 import "styles/sidebar.css";
 
 export default function Sidebar() {
-  const { theme } = useTheme();
   return (
-    <nav className={theme === "light" ? "sidebar" : "sidebar dark"}>
+    <nav className="sidebar">
       <NavLink className="sidebar-links" to="/">
         <MdExplore className="sidebar-icons" />
         <p className="sidebar-pages p-sm">Explore</p>
