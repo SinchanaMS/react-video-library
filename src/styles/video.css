@@ -8,17 +8,13 @@ html {
 }
 
 .player {
-  background-color: var(--CARD-BG);
+  background-color: var(--PAGE-BG);
   margin-top: 3rem;
   margin-left: 6.5rem;
   padding: 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.player.dark {
-  background-color: var(--PAGE-BG);
   color: var(--THEME-TEXT);
 }
 

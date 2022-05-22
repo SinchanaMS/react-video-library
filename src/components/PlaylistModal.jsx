@@ -11,6 +11,7 @@ import { usePlaylist } from "contexts/PlaylistContext";
 import toast from "react-hot-toast";
 
 export default function PlaylistModal({ video }) {
+  const userToken = localStorage.getItem("userToken");
   const { playlist, setPlaylist, setShowPlaylistModal } = usePlaylist();
   const {
     videoDispatch,
@@ -40,7 +41,7 @@ export default function PlaylistModal({ video }) {
               onClick={() =>
                 videoInPlaylist(playlist)
                   ? toast.error("Video already exists in the playlist")
-                  : addToPlaylist(playlist._id, video, videoDispatch)
+                  : addToPlaylist(playlist._id, video, userToken, videoDispatch)
               }
             >
               <label className="playlist">
@@ -72,7 +73,8 @@ export default function PlaylistModal({ video }) {
                 playlist.title,
                 playlist.description,
                 videoDispatch,
-                setPlaylist
+                setPlaylist,
+                userToken
               )
             }
           />

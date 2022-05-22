@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import VideoCard from "components/VideoCard";
-import { useAuth, useTheme, useVideo, usePlaylist } from "contexts/contexts";
+import { useTheme, useVideo, usePlaylist } from "contexts/contexts";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
@@ -16,7 +16,7 @@ import PlaylistModal from "components/PlaylistModal";
 export default function VideoPage() {
   const { videoId } = useParams();
   const { theme } = useTheme();
-  const { isLoggedIn } = useAuth();
+  const userToken = localStorage.getItem("userToken");
 
   const {
     videoDispatch,
@@ -66,7 +66,11 @@ export default function VideoPage() {
             width="var(--PLAYER-WIDTH)"
             height="var(--PLAYER-HEIGHT)"
             playing={true}
-            onReady={isLoggedIn ? () => addToHistory(video, videoDispatch) : ""}
+            onReady={
+              userToken
+                ? () => addToHistory(video, userToken, videoDispatch)
+                : ""
+            }
             url={`https://www.youtube.com/watch?v=${videoId}`}
           />
           <div className="video-text">

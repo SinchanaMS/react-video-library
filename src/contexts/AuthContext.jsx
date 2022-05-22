@@ -20,7 +20,6 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(true);
     }
   }, [userToken]);
-
   const logoutHandler = () => {
     localStorage.removeItem("userToken");
     setIsLoggedIn(false);

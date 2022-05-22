@@ -5,6 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 import "styles/playlistcard.css";
 
 export default function PlaylistCard({ playlist }) {
+  const userToken = localStorage.getItem("userToken");
   const {
     helperFunctions: { deletePlaylist },
     videoDispatch,
@@ -35,7 +36,7 @@ export default function PlaylistCard({ playlist }) {
           </div>
           <AiFillDelete
             className="delete-icon"
-            onClick={() => deletePlaylist(playlist, videoDispatch)}
+            onClick={() => deletePlaylist(playlist, userToken, videoDispatch)}
           />
         </div>
       </div>

@@ -17,15 +17,15 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider>
-        <PlaylistProvider>
-          <VideoProvider>
-            <AuthProvider>
+      <AuthProvider>
+        <ThemeProvider>
+          <PlaylistProvider>
+            <VideoProvider>
               <App />
-            </AuthProvider>
-          </VideoProvider>
-        </PlaylistProvider>
-      </ThemeProvider>
+            </VideoProvider>
+          </PlaylistProvider>
+        </ThemeProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

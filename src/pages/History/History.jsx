@@ -5,6 +5,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import empty from "assets/videotape.svg";
 
 export default function History() {
+  const userToken = localStorage.getItem("userToken");
   const {
     videoData,
     videoDispatch,
@@ -15,7 +16,7 @@ export default function History() {
   return (
     <div className="history-list">
       <button
-        onClick={() => clearHistory(videoDispatch)}
+        onClick={() => clearHistory(userToken, videoDispatch)}
         className="clear-history"
       >
         Clear History
@@ -31,7 +32,9 @@ export default function History() {
               <VideoCard video={video} key={video._id} />
               <AiFillCloseCircle
                 className="delete-btn"
-                onClick={() => deleteFromHistory(video, videoDispatch)}
+                onClick={() =>
+                  deleteFromHistory(video, userToken, videoDispatch)
+                }
               />
             </div>
           ))

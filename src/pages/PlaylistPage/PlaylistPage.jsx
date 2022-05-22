@@ -5,6 +5,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import empty from "assets/videotape.svg";
 
 export default function PlaylistPage() {
+  const userToken = localStorage.getItem("userToken");
   const { playlistId } = useParams();
   const {
     videoData: { playlists },
@@ -29,7 +30,12 @@ export default function PlaylistPage() {
             <AiFillCloseCircle
               className="delete-video"
               onClick={() =>
-                deleteFromPlaylist(findPlaylist, video, videoDispatch)
+                deleteFromPlaylist(
+                  findPlaylist,
+                  video,
+                  userToken,
+                  videoDispatch
+                )
               }
             />
           </div>
