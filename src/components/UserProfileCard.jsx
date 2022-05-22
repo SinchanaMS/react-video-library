@@ -1,15 +1,16 @@
-import { useVideo } from "contexts/contexts";
+import { useAuth, useVideo } from "contexts/contexts";
 
 export default function UserProfileCard() {
   const { videoData } = useVideo();
   const { watchList, likedList, playlists } = videoData;
-  console.log(videoData, watchList, likedList, playlists);
+  const { testUser } = useAuth();
+  const { firstName, email } = testUser;
 
   return (
     <div className="profile-card shadow">
       <header className="profile-card-header">
-        <h1>Hello, Daniel!</h1>
-        <p>danielFelton@gmail.com</p>
+        <h1>Hello, {firstName}!</h1>
+        <p>{email}</p>
       </header>
 
       <div className="profile-card-body">

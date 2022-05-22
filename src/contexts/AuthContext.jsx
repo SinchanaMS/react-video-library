@@ -9,9 +9,12 @@ const AuthProvider = ({ children }) => {
   const userToken = localStorage.getItem("userToken");
   const navigate = useNavigate();
   const testUser = {
+    firstName: "Daniel",
+    lastName: "Felton",
     email: "danielFelton@gmail.com",
     password: "FortunaMajor",
   };
+
   useEffect(() => {
     if (userToken) {
       setIsLoggedIn(true);

@@ -11,6 +11,7 @@ export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
   const [showPwd, setShowPwd] = useState(false);
+  const { email, password } = testUser;
   let lastLocation = location.state?.from?.pathname || "/";
 
   const setUserData = (e) => {
@@ -22,7 +23,7 @@ export default function Login() {
     e.preventDefault();
     sendLoginData(loginData);
   };
-  console.log(lastLocation);
+
   const sendLoginData = async (loginData) => {
     try {
       const response = await axios.post("/api/auth/login", loginData);
@@ -37,8 +38,8 @@ export default function Login() {
     }
   };
 
-  const guestLogin = () => {
-    setLoginData(testUser);
+  const guestLogin = ({ email, password }) => {
+    setLoginData({ email, password });
   };
 
   return (
@@ -87,7 +88,7 @@ export default function Login() {
             </button>
             <button
               className="btn link-btn-outline login-btn icon-dark"
-              onClick={() => guestLogin(testUser)}
+              onClick={() => guestLogin({ email, password })}
             >
               Test User
             </button>
