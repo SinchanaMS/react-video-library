@@ -1,6 +1,5 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-const userToken = localStorage.getItem("userToken");
 
 export const categories = async (videoDispatch) => {
   try {
@@ -17,7 +16,7 @@ export const categories = async (videoDispatch) => {
   }
 };
 
-export const addToWatchlist = async (video, videoDispatch) => {
+export const addToWatchlist = async (video, userToken, videoDispatch) => {
   try {
     const response = await axios.post(
       "/api/user/watchlater",
@@ -41,7 +40,7 @@ export const addToWatchlist = async (video, videoDispatch) => {
   }
 };
 
-export const removeFromWatchlist = async (video, videoDispatch) => {
+export const removeFromWatchlist = async (video, userToken, videoDispatch) => {
   try {
     const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
       headers: {
@@ -61,7 +60,7 @@ export const removeFromWatchlist = async (video, videoDispatch) => {
   }
 };
 
-export const addToLikedList = async (video, videoDispatch) => {
+export const addToLikedList = async (video, userToken, videoDispatch) => {
   try {
     const response = await axios.post(
       "/api/user/likes",
@@ -82,7 +81,7 @@ export const addToLikedList = async (video, videoDispatch) => {
   }
 };
 
-export const removeFromLikedList = async (video, videoDispatch) => {
+export const removeFromLikedList = async (video, userToken, videoDispatch) => {
   try {
     const response = await axios.delete(`/api/user/likes/${video._id}`, {
       headers: {
@@ -102,7 +101,7 @@ export const removeFromLikedList = async (video, videoDispatch) => {
   }
 };
 
-export const addToHistory = async (video, videoDispatch) => {
+export const addToHistory = async (video, userToken, videoDispatch) => {
   try {
     const response = await axios.post(
       "/api/user/history",
@@ -121,7 +120,7 @@ export const addToHistory = async (video, videoDispatch) => {
   }
 };
 
-export const deleteFromHistory = async (video, videoDispatch) => {
+export const deleteFromHistory = async (video, userToken, videoDispatch) => {
   try {
     const response = await axios.delete(`/api/user/history/${video._id}`, {
       headers: {
@@ -141,7 +140,7 @@ export const deleteFromHistory = async (video, videoDispatch) => {
   }
 };
 
-export const clearHistory = async (videoDispatch) => {
+export const clearHistory = async (userToken, videoDispatch) => {
   try {
     const response = await axios.delete("/api/user/history/all", {
       headers: {
@@ -165,7 +164,8 @@ export const createPlaylist = async (
   title = "",
   description = "",
   videoDispatch,
-  setPlaylist
+  setPlaylist,
+  userToken
 ) => {
   try {
     const response = await axios.post(
@@ -193,7 +193,7 @@ export const createPlaylist = async (
   }
 };
 
-export const deletePlaylist = async (playlist, videoDispatch) => {
+export const deletePlaylist = async (playlist, userToken, videoDispatch) => {
   try {
     const response = await axios.delete(`/api/user/playlists/${playlist._id}`, {
       headers: {
@@ -213,7 +213,12 @@ export const deletePlaylist = async (playlist, videoDispatch) => {
   }
 };
 
-export const addToPlaylist = async (playlistID, video, videoDispatch) => {
+export const addToPlaylist = async (
+  playlistID,
+  video,
+  userToken,
+  videoDispatch
+) => {
   try {
     const response = await axios.post(
       `/api/user/playlists/${playlistID}`,
@@ -244,7 +249,12 @@ export const addToPlaylist = async (playlistID, video, videoDispatch) => {
   }
 };
 
-export const deleteFromPlaylist = async (playlist, video, videoDispatch) => {
+export const deleteFromPlaylist = async (
+  playlist,
+  video,
+  userToken,
+  videoDispatch
+) => {
   try {
     const response = await axios.delete(
       `/api/user/playlists/${playlist._id}/${video._id}`,

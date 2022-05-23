@@ -8,18 +8,14 @@ html {
 }
 
 .player {
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--PAGE-BG);
   margin-top: 3rem;
   margin-left: 6.5rem;
   padding: 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.player.dark {
-  background-color: var(--DARK-THEME-BG);
-  color: var(--DARK-THEME-TEXT);
+  color: var(--THEME-TEXT);
 }
 
 .video-player {
@@ -28,13 +24,13 @@ html {
   overflow: hidden;
   height: fit-content;
   position: relative;
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--CARD-BG);
   display: flex;
   align-items: flex-start;
 }
 
 .video-player.dark {
-  background-color: var(--CARD-DARK);
+  background-color: var(--CARD-BG);
   display: flex;
 }
 
@@ -55,6 +51,10 @@ html {
   margin: 8px;
   min-height: 13.5rem;
   border-radius: 1rem;
+}
+
+.videocard .video-card .options {
+  font-size: small;
 }
 
 .player-ctas {

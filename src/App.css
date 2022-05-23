@@ -1,72 +1,70 @@
 @import url("https://clay-ui.netlify.app/stylesheets/index.css");
 
 :root {
-  --CARD-LIGHT: #f0eded;
-  --CARD-DARK: #2b2a2a;
-  --DARK-THEME-BG: #202020;
-  --DARK-THEME-TEXT: #e9e6e6;
-  --LIGHT-NAV-BG: #f5f1f1;
-  --CTAS-LIGHT: #3b3939;
-  --CTAS-DARK: #ded6d6;
-  --BRAND-LOGO-BG: #b7caca;
   --SEARCH-BAR-BG: #f8f8f8;
-  --BG-LIGHT: #e0dbdb;
-  --MODAL-BG-DARK: #53535315;
-  --MODAL-BG-LIGHT: #f5f1f10e;
-  --INPUT-BG: #e6e4e4;
-  --INPUT-FOCUS: #777676;
+  --INPUT-BG: #dedada;
   --MODAL-OUTLINE-LIGHT: #c7c6c6;
-  --DIALOG-TEXT: #000000;
-  --DIALOG-HOVER-BG: #cbc8c8;
   --DELETE-BTN: #8d8888;
   --CHECK-ICON-BG: #628d62;
+  --TEXT-DARK: #171717;
+  --AUTH-CARD-BG: #ded6d6;
+  --AUTH-CTAS: #ebbd08;
+  --PROFILE-CARD-BG: #dfd877;
+  --PROFILE-CARD-GRADIENT: linear-gradient(
+    138deg,
+    #dfd877 0%,
+    #fdd41d 50%,
+    #ebbd08 100%
+  );
+  --STATS-BG: #edc514;
+  --STATS-GRADIENT: linear-gradient(
+    325deg,
+    #edc514 2%,
+    #edc514 50%,
+    #e3d022 99%
+  );
+}
+
+.light {
+  --CARD-BG: #e5e4e4;
+  --CTAS: #3b3939;
+  --PAGE-BG: #e5e4e4;
+  --MODAL-BG: #f5f1f10e;
+  --PRIMARY-BG: #ebbd08;
+  --THEME-TEXT: #171717;
+  --SCROLLBAR-BG: #e5e4e4;
+  --SCROLLBAR-THUMB: #ded6d6;
+  --GRAY-TEXT: #676666;
+}
+
+.dark {
+  --CARD-BG: #2b2a2a;
+  --CTAS: #ded6d6;
+  --PAGE-BG: #171717;
+  --MODAL-BG: #53535315;
+  --PRIMARY-BG: #f4d453;
+  --THEME-TEXT: #e9e6e6;
+  --SCROLLBAR-BG: #171717;
+  --SCROLLBAR-THUMB: #2b2a2a;
+  --GRAY-TEXT: #9e9e9e;
 }
 
 body {
   height: auto;
 }
 
-body::-webkit-scrollbar-thumb {
-  background: var(--CARD-DARK);
-}
-
 body::-webkit-scrollbar {
-  width: 7px;
-  background: var(--DARK-THEME-BG);
+  display: none;
 }
 
-.dark .suggestions::-webkit-scrollbar-thumb {
-  background: var(--CARD-DARK);
-}
-
-.dark .suggestions::-webkit-scrollbar {
-  height: 7px;
-  background: var(--DARK-THEME-BG);
-}
-
-.dark .videos::-webkit-scrollbar-thumb {
-  background: var(--CARD-DARK);
-}
-
-.dark .videos::-webkit-scrollbar {
-  height: 7px;
-  background: var(--DARK-THEME-BG);
-}
-
-.suggestions::-webkit-scrollbar {
-  height: 7px;
-  background: var(--CARD-LIGHT);
-}
-
-.suggestions::-webkit-scrollbar-thumb {
-  background: var(--CTAS-DARK);
-}
-
-.videos::-webkit-scrollbar-thumb {
-  background: var(--CTAS-DARK);
-}
-
+.suggestions::-webkit-scrollbar,
 .videos::-webkit-scrollbar {
   height: 7px;
-  background: var(--CARD-LIGHT);
+  background: var(--SCROLLBAR-BG);
+}
+
+.suggestions::-webkit-scrollbar-thumb,
+.videos::-webkit-scrollbar-thumb {
+  background-color: var(--SCROLLBAR-THUMB);
+  border-radius: 10px;
 }

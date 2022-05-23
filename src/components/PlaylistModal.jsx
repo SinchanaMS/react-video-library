@@ -5,28 +5,25 @@ import {
   AiFillPlusCircle,
   AiFillCheckCircle,
 } from "react-icons/ai";
-import { addToPlaylist, createPlaylist } from "router/utils/HelperFunctions";
-import { useVideo, useTheme } from "contexts/contexts";
+import { addToPlaylist, createPlaylist } from "utils/HelperFunctions";
+import { useVideo } from "contexts/contexts";
 import { usePlaylist } from "contexts/PlaylistContext";
 import toast from "react-hot-toast";
 
 export default function PlaylistModal({ video }) {
+  const userToken = localStorage.getItem("userToken");
   const { playlist, setPlaylist, setShowPlaylistModal } = usePlaylist();
   const {
     videoDispatch,
     videoData: { playlists },
   } = useVideo();
 
-  const { theme } = useTheme();
-
   const videoInPlaylist = (playlist) => {
     return playlist.videos.some((vid) => vid._id === video._id);
   };
 
   return (
-    <div
-      className={theme === "light" ? "playlist-modal" : "playlist-modal dark"}
-    >
+    <div className="playlist-modal">
       <div className="modal-bg"></div>
       <div className="modal">
         <h2 className="modal-title p-lg">
@@ -44,7 +41,7 @@ export default function PlaylistModal({ video }) {
               onClick={() =>
                 videoInPlaylist(playlist)
                   ? toast.error("Video already exists in the playlist")
-                  : addToPlaylist(playlist._id, video, videoDispatch)
+                  : addToPlaylist(playlist._id, video, userToken, videoDispatch)
               }
             >
               <label className="playlist">
@@ -76,7 +73,8 @@ export default function PlaylistModal({ video }) {
                 playlist.title,
                 playlist.description,
                 videoDispatch,
-                setPlaylist
+                setPlaylist,
+                userToken
               )
             }
           />

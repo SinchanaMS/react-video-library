@@ -8,6 +8,7 @@ import "styles/videolisting.css";
 export default function VideoCard({ video }) {
   const { theme } = useTheme();
   const [showOptions, setShowOptions] = useState(false);
+  const userToken = localStorage.getItem("userToken");
 
   const {
     helperFunctions: {
@@ -35,7 +36,7 @@ export default function VideoCard({ video }) {
   return (
     <div>
       <div
-        className={theme === "light" ? "video-card shadow" : "video-card dark"}
+        className={theme === "light" ? "video-card shadow" : "video-card"}
         key={id}
       >
         <Link to={`/video/${video.videoId}`}>
@@ -50,7 +51,7 @@ export default function VideoCard({ video }) {
           </div>
           <div>
             <MdMoreVert
-              className="more-options"
+              className={showOptions ? "more-options active" : "more-options"}
               onClick={() => setShowOptions((prev) => !prev)}
             />
             <div
@@ -61,14 +62,18 @@ export default function VideoCard({ video }) {
               {inWatchList ? (
                 <button
                   className="options"
-                  onClick={() => removeFromWatchlist(video, videoDispatch)}
+                  onClick={() =>
+                    removeFromWatchlist(video, userToken, videoDispatch)
+                  }
                 >
                   <MdWatchLater /> Remove from Watch Later
                 </button>
               ) : (
                 <button
                   className="options"
-                  onClick={() => addToWatchlist(video, videoDispatch)}
+                  onClick={() =>
+                    addToWatchlist(video, userToken, videoDispatch)
+                  }
                 >
                   <MdOutlineWatchLater />
                   Add to Watch Later
@@ -77,14 +82,18 @@ export default function VideoCard({ video }) {
               {inLikedList ? (
                 <button
                   className="options"
-                  onClick={() => removeFromLikedList(video, videoDispatch)}
+                  onClick={() =>
+                    removeFromLikedList(video, userToken, videoDispatch)
+                  }
                 >
                   <IoHeartSharp /> Remove from Liked Videos
                 </button>
               ) : (
                 <button
                   className="options"
-                  onClick={() => addToLikedList(video, videoDispatch)}
+                  onClick={() =>
+                    addToLikedList(video, userToken, videoDispatch)
+                  }
                 >
                   <IoHeartOutline />
                   Add to Liked Videos

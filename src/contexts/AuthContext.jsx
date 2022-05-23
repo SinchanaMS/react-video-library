@@ -8,13 +8,18 @@ const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const userToken = localStorage.getItem("userToken");
   const navigate = useNavigate();
+  const testUser = {
+    firstName: "Daniel",
+    lastName: "Felton",
+    email: "danielFelton@gmail.com",
+    password: "FortunaMajor",
+  };
 
   useEffect(() => {
     if (userToken) {
       setIsLoggedIn(true);
     }
   }, [userToken]);
-
   const logoutHandler = () => {
     localStorage.removeItem("userToken");
     setIsLoggedIn(false);
@@ -22,7 +27,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, logoutHandler }}>
+    <AuthContext.Provider
+      value={{ testUser, isLoggedIn, setIsLoggedIn, logoutHandler }}
+    >
       {children}
     </AuthContext.Provider>
   );

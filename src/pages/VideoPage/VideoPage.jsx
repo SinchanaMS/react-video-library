@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import VideoCard from "components/VideoCard";
-import { useAuth, useTheme, useVideo, usePlaylist } from "contexts/contexts";
+import { useTheme, useVideo, usePlaylist } from "contexts/contexts";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
@@ -16,7 +16,7 @@ import PlaylistModal from "components/PlaylistModal";
 export default function VideoPage() {
   const { videoId } = useParams();
   const { theme } = useTheme();
-  const { isLoggedIn } = useAuth();
+  const userToken = localStorage.getItem("userToken");
 
   const {
     videoDispatch,
@@ -55,11 +55,9 @@ export default function VideoPage() {
   const { showPlaylistModal, setShowPlaylistModal } = usePlaylist();
 
   return (
-    <div className={theme === "light" ? "player" : "dark player"}>
+    <div className="player">
       <div
-        className={
-          theme === "light" ? "video-player shadow" : "video-player dark"
-        }
+        className={theme === "light" ? "video-player shadow" : "video-player"}
       >
         <div>
           <ReactPlayer
@@ -68,7 +66,11 @@ export default function VideoPage() {
             width="var(--PLAYER-WIDTH)"
             height="var(--PLAYER-HEIGHT)"
             playing={true}
-            onReady={isLoggedIn ? () => addToHistory(video, videoDispatch) : ""}
+            onReady={
+              userToken
+                ? () => addToHistory(video, userToken, videoDispatch)
+                : ""
+            }
             url={`https://www.youtube.com/watch?v=${videoId}`}
           />
           <div className="video-text">
@@ -84,23 +86,31 @@ export default function VideoPage() {
               {inWatchList ? (
                 <MdWatchLater
                   className="player-options p-sm"
-                  onClick={() => removeFromWatchlist(video, videoDispatch)}
+                  onClick={() =>
+                    removeFromWatchlist(video, userToken, videoDispatch)
+                  }
                 />
               ) : (
                 <MdOutlineWatchLater
                   className="player-options p-sm"
-                  onClick={() => addToWatchlist(video, videoDispatch)}
+                  onClick={() =>
+                    addToWatchlist(video, userToken, videoDispatch)
+                  }
                 />
               )}
               {inLikedList ? (
                 <IoHeartSharp
                   className="player-options p-sm"
-                  onClick={() => removeFromLikedList(video, videoDispatch)}
+                  onClick={() =>
+                    removeFromLikedList(video, userToken, videoDispatch)
+                  }
                 />
               ) : (
                 <IoHeartOutline
                   className="player-options p-sm"
-                  onClick={() => addToLikedList(video, videoDispatch)}
+                  onClick={() =>
+                    addToLikedList(video, userToken, videoDispatch)
+                  }
                 />
               )}
               <MdPlaylistPlay

@@ -4,7 +4,7 @@
 }
 
 .video-list {
-  width: calc(100vw - 6.9rem);
+  width: calc(100vw - 6.5rem);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   align-content: flex-start;
@@ -12,19 +12,15 @@
   margin-top: 3rem;
   margin-left: 6.5rem;
   min-height: 100vh;
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--PAGE-BG);
+  color: var(--THEME-TEXT);
 }
 
 .explore-videos {
   display: flex;
   flex-direction: column;
-  background-color: var(--CARD-LIGHT);
-}
-
-.explore-videos.dark,
-.video-list.dark {
-  background-color: var(--DARK-THEME-BG);
-  color: var(--DARK-THEME-TEXT);
+  background-color: var(--PAGE-BG);
+  color: var(--THEME-TEXT);
 }
 
 .video-title {
@@ -40,13 +36,13 @@
   margin: 8px;
   min-height: 17.75rem;
   border-radius: 1rem;
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--CARD-BG);
   overflow: hidden;
   position: relative;
 }
 
 .video-card.dark {
-  background-color: var(--CARD-DARK);
+  background-color: var(--CARD-BG);
 }
 
 .video-details {
@@ -57,24 +53,39 @@
 }
 
 .creator-dp {
-  height: 40px;
-  width: 40px;
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 50%;
+}
+
+.creator-text .p-grey {
+  color: var(--GRAY-TEXT);
 }
 
 .more-options {
   position: absolute;
   right: 12px;
-  bottom: 5px;
+  bottom: 15px;
   align-self: flex-end;
   padding: 5px;
   font-size: 1.75rem;
   z-index: 3;
   border-radius: 50%;
+  transition: transform 600ms;
+}
+
+.dark .more-options {
+  background-color: var(--CARD-BG);
+}
+
+.more-options.active {
+  filter: brightness(0.7);
+  transform: rotate(90deg);
 }
 
 .more-options:hover {
   cursor: pointer;
+  filter: brightness(0.8);
 }
 
 .options-dialog.hide {
@@ -88,55 +99,48 @@
 .options-dialog {
   position: absolute;
   right: 0;
+  bottom: 0;
   height: 6.5rem;
-  bottom: 0rem;
   width: 100%;
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--CARD-BG);
   padding: 5px 10px;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 8px;
   transition: height 500ms ease-out;
 }
 
 .dark .options-dialog {
-  background-color: var(--CARD-DARK);
+  background-color: var(--CARD-BG);
 }
 
 .options {
   display: flex;
   gap: 1rem;
+  width: 85%;
   align-items: center;
+  justify-content: center;
   padding: 5px 7px;
-  border-radius: 4px;
+  background-color: var(--PRIMARY-BG);
+  border-radius: 0.5rem;
   border: none;
   font-size: 1rem;
   font-weight: 500;
 }
 
-.dark .options {
-  background-color: var(--CARD-DARK);
-  color: var(--DARK-THEME-TEXT);
-}
 .options:hover {
   cursor: pointer;
   filter: brightness(0.9);
 }
 
 .category-list {
-  margin-top: 5rem;
   display: flex;
-  margin: 5rem auto 0;
+  justify-content: center;
   gap: 2rem;
-}
-
-.category-list.dark,
-.history-list.dark,
-.history-list.dark .clear-history {
-  background-color: var(--DARK-THEME-BG);
-  color: var(--DARK-THEME-TEXT);
+  flex-wrap: wrap;
+  margin: 5rem auto 0;
 }
 
 .explore-videos .video-list {
@@ -144,8 +148,8 @@
 }
 
 .category {
-  border: 1.8px solid var(--CTAS-DARK);
   padding: 3px 10px;
+  border: 1.8px solid var(--CTAS);
   border-radius: 2rem;
 }
 
@@ -159,7 +163,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: var(--CARD-LIGHT);
+  background-color: var(--PAGE-BG);
 }
 
 .history-list .video-list {
@@ -169,7 +173,6 @@
 }
 
 .history-list .video-list .video-card {
-  margin-right: 2px;
   margin: 0 auto 10px;
 }
 
@@ -177,7 +180,8 @@
   align-self: flex-end;
   padding: 4px 10px;
   border-radius: 4px;
-  border: 2px solid var(--CTAS-DARK);
+  background-color: var(--PRIMARY-BG);
+  border: 2px solid var(--PRIMARY-BG);
 }
 
 .history-video {
@@ -189,12 +193,13 @@
   position: absolute;
   top: 15px;
   right: 10px;
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 
 .category.active {
-  background-color: var(--CTAS-DARK);
-  color: black;
+  background-color: var(--PRIMARY-BG);
+  color: var(--TEXT-DARK);
+  border: none;
 }
 
 .error.video-list {
@@ -208,6 +213,12 @@
 
 .error-page {
   margin: auto;
+  height: 70%;
+  width: 40%;
+}
+
+.error-page img {
+  height: 100%;
 }
 
 .empty-page {
@@ -260,8 +271,8 @@
   .history-list .delete-btn {
     position: absolute;
     top: 15px;
-    right: 30px;
-    font-size: 30px;
+    right: 1.875rem;
+    font-size: 1.875rem;
   }
 
   .empty-page {

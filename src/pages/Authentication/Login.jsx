@@ -2,21 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "styles/login.css";
-import { useTheme } from "contexts/ThemeContext";
+import { useAuth } from "contexts/contexts";
 
 export default function Login() {
-  const { theme } = useTheme();
+  const { testUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
   const [showPwd, setShowPwd] = useState(false);
-  let lastLocation = location.state?.from?.pathname;
-
-  const testUser = {
-    email: "testUser@gmail.com",
-    password: "FortunaMajor",
-  };
+  const { email, password } = testUser;
+  let lastLocation = location.state?.from?.pathname || "/";
 
   const setUserData = (e) => {
     const { name, value } = e.target;
@@ -42,12 +38,12 @@ export default function Login() {
     }
   };
 
-  const guestLogin = () => {
-    setLoginData(testUser);
+  const guestLogin = ({ email, password }) => {
+    setLoginData({ email, password });
   };
 
   return (
-    <div className={theme === "light" ? "page-body" : "page-body dark"}>
+    <div className="page-body">
       <section className="login-container">
         <h2 className="container-title">Login</h2>
         <form className="login-details" onSubmit={handleLogin}>
@@ -92,7 +88,7 @@ export default function Login() {
             </button>
             <button
               className="btn link-btn-outline login-btn icon-dark"
-              onClick={() => guestLogin(testUser)}
+              onClick={() => guestLogin({ email, password })}
             >
               Test User
             </button>
