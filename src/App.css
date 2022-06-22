@@ -36,6 +36,7 @@
   --SCROLLBAR-BG: #e5e4e4;
   --SCROLLBAR-THUMB: #ded6d6;
   --GRAY-TEXT: #676666;
+  --SEARCH-BORDER: #676666;
 }
 
 .dark {
@@ -48,6 +49,7 @@
   --SCROLLBAR-BG: #171717;
   --SCROLLBAR-THUMB: #2b2a2a;
   --GRAY-TEXT: #9e9e9e;
+  --SEARCH-BORDER: #2b2a2a;
 }
 
 body {

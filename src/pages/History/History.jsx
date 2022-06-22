@@ -3,6 +3,7 @@ import { useVideo } from "contexts/contexts";
 import "styles/videolisting.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 import empty from "assets/videotape.svg";
+import { compose, searchFor } from "utils/HelperFunctions";
 
 export default function History() {
   const userToken = localStorage.getItem("userToken");
@@ -12,7 +13,7 @@ export default function History() {
     helperFunctions: { clearHistory, deleteFromHistory },
   } = useVideo();
   const { history } = videoData;
-
+  const filteredVideos = compose(videoData, searchFor)(history);
   return (
     <div className="history-list">
       <button
@@ -22,12 +23,12 @@ export default function History() {
         Clear History
       </button>
       <div className="video-list">
-        {history.length === 0 ? (
+        {filteredVideos.length === 0 ? (
           <div className="empty-page">
             <img src={empty} alt="empty-page" />
           </div>
         ) : (
-          history?.map((video) => (
+          filteredVideos?.map((video) => (
             <div className="history-video" key={video._id}>
               <VideoCard video={video} key={video._id} />
               <AiFillCloseCircle

@@ -46,13 +46,13 @@
 .search-input {
   padding: 4px;
   min-width: 25rem;
-  border: thin solid var(--DEFAULT-GREY);
+  border: thin solid var(--SEARCH-BORDER);
   border-radius: 4px;
-  background: var(--SEARCH-BAR-BG);
+  background: var(--CARD-BG);
+  color: var(--THEME-TEXT);
 }
 
 .search-input:focus {
-  border-color: var(--PURE-BLACK);
   outline: none;
 }
 

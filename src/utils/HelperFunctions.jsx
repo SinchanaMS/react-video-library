@@ -287,13 +287,13 @@ export const sortBy = (state, data) =>
     ? [...data].sort((a, b) => new Date(b.published) - new Date(a.published))
     : [...data].sort((a, b) => new Date(a.published) - new Date(b.published));
 
-export const searchFor = (state, data) =>
-  data?.filter(
+export const searchFor = (state, data) => {
+  return data?.filter(
     (video) =>
-      video?.title.toLowerCase().includes(state.searchFor.toLowerCase()) ||
-      video?.creator.toLowerCase().includes(state.searchFor.toLowerCase())
+      video?.title?.toLowerCase().includes(state.searchFor.toLowerCase()) ||
+      video?.creator?.toLowerCase().includes(state.searchFor.toLowerCase())
   );
-
+};
 export const compose =
   (state, ...functions) =>
   (data) => {
