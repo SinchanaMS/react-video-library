@@ -21,6 +21,7 @@
   flex-direction: column;
   background-color: var(--PAGE-BG);
   color: var(--THEME-TEXT);
+  position: relative;
 }
 
 .video-title {
@@ -138,9 +139,22 @@
 .category-list {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 5rem auto 0;
+}
+
+.sort-options {
+  display: flex;
+  position: absolute;
+  right: 3rem;
 }
 
 .explore-videos .video-list {

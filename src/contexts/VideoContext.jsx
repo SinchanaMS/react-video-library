@@ -25,7 +25,7 @@ const initialData = {
   categoryList: [],
   playlists: [],
   category: "All",
-  sortBy: "",
+  sortBy: "Latest",
   searchFor: "",
 };
 

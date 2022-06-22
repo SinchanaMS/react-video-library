@@ -285,7 +285,7 @@ export const filterByCategory = (state, data) =>
 export const sortBy = (state, data) =>
   state.sortBy === "Latest"
     ? [...data].sort((a, b) => new Date(b.published) - new Date(a.published))
-    : data;
+    : [...data].sort((a, b) => new Date(a.published) - new Date(b.published));
 
 export const searchFor = (state, data) =>
   data?.filter(
