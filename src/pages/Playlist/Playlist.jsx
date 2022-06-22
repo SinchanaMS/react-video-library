@@ -12,6 +12,7 @@ export default function Playlist() {
       {filteredPlaylists?.length === 0 ? (
         <div className="empty-page">
           <img src={emptyPL} alt="empty-page" />
+          <p>No results found.</p>
         </div>
       ) : (
         filteredPlaylists?.map((playlist) => (

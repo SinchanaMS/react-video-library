@@ -25,6 +25,7 @@ export default function PlaylistPage() {
       {findPlaylist?.length === 0 ? (
         <div className="empty-page">
           <img src={empty} alt="empty-page" />
+          <p>No results found.</p>
         </div>
       ) : (
         filteredVideos?.map((video) => (
