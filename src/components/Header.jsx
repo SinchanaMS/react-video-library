@@ -1,10 +1,10 @@
-import { MdNightlightRound, MdWbSunny } from "react-icons/md";
-import { AiOutlineUser } from "react-icons/ai";
-import { Link, useLocation } from "react-router-dom";
-import { useAuth, useTheme, useVideo } from "contexts/contexts";
-import "styles/header.css";
 import { useState } from "react";
+import { MdNightlightRound, MdWbSunny } from "react-icons/md";
+import { Link, useLocation } from "react-router-dom";
+import { AiOutlineUser } from "react-icons/ai";
+import { useAuth, useTheme, useVideo } from "contexts/contexts";
 import logo from "assets/logo.png";
+import "styles/header.css";
 
 export default function Header() {
   const { videoDispatch } = useVideo();
@@ -12,6 +12,19 @@ export default function Header() {
   const { isLoggedIn, logoutHandler } = useAuth();
   const location = useLocation();
   const [showUserDialog, setShowUserDialog] = useState(false);
+
+  const placeholders = [
+    { location: "/", placeholder: "Search " },
+    { location: "/history", placeholder: "Search in history" },
+    { location: "/playlists", placeholder: "Search for playlist" },
+    { location: "/liked", placeholder: "Search in likes" },
+    { location: "/watchlater", placeholder: "Search in watchlist" },
+  ];
+
+  const placeholderText = placeholders.find(
+    (item) => item.location === location?.pathname
+  )?.placeholder;
+
   return (
     <div className="header">
       <Link to="/">
@@ -23,7 +36,7 @@ export default function Header() {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Search"
+          placeholder={placeholderText ?? "Search"}
           className="search-input"
           onChange={(e) =>
             videoDispatch({ type: "SEARCH_FOR", payload: e.target.value })
