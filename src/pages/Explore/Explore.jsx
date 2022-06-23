@@ -5,7 +5,7 @@ import "styles/videolisting.css";
 import empty from "assets/videotape.svg";
 
 export default function Explore() {
-  const { filteredVideos } = useVideo();
+  const { filteredVideos, loading } = useVideo();
 
   return (
     <div className="main-content">
@@ -15,7 +15,7 @@ export default function Explore() {
           {filteredVideos?.length === 0 ? (
             <div className="empty-page">
               <img src={empty} alt="empty-page" />
-              <p>No results found.</p>
+              <p>{loading ? "Loading videos..." : "No results found."}</p>
             </div>
           ) : (
             filteredVideos?.map((video) => (

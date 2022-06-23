@@ -6,7 +6,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { videoReducer } from "reducers/videoReducer";
 import {
   categories,
   compose,
@@ -15,6 +14,7 @@ import {
   searchFor,
   sortBy,
 } from "utils/HelperFunctions";
+import { videoReducer } from "reducers/videoReducer";
 
 const VideoContext = createContext();
 
@@ -25,7 +25,7 @@ const initialData = {
   categoryList: [],
   playlists: [],
   category: "All",
-  sortBy: "Latest",
+  sortBy: "",
   searchFor: "",
 };
 
@@ -33,14 +33,17 @@ const VideoProvider = ({ children }) => {
   const [videoData, videoDispatch] = useReducer(videoReducer, initialData);
   const [allVideos, setAllVideos] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
+        setLoading(true);
         const response = await axios.get("/api/videos");
         if (response.status === 200) {
           setAllVideos(response.data.videos);
         }
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -67,6 +70,8 @@ const VideoProvider = ({ children }) => {
         showOptions,
         helperFunctions,
         filteredVideos,
+        loading,
+        setLoading,
         videoDispatch,
         setShowOptions,
       }}
