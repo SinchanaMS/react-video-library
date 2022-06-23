@@ -58,3 +58,18 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+@media (max-width: 480px) {
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 33px;
+    height: 18px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+  }
+}

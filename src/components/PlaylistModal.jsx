@@ -5,10 +5,13 @@ import {
   AiFillPlusCircle,
   AiFillCheckCircle,
 } from "react-icons/ai";
-import { addToPlaylist, createPlaylist } from "utils/HelperFunctions";
+import {
+  addToPlaylist,
+  createPlaylist,
+  deleteFromPlaylist,
+} from "utils/HelperFunctions";
 import { useVideo } from "contexts/contexts";
 import { usePlaylist } from "contexts/PlaylistContext";
-import toast from "react-hot-toast";
 
 export default function PlaylistModal({ video }) {
   const userToken = localStorage.getItem("userToken");
@@ -34,28 +37,40 @@ export default function PlaylistModal({ video }) {
           />
         </h2>
 
-        <ul className="playlists">
-          {playlists.map((playlist) => (
-            <li
-              key={playlist._id}
-              onClick={() =>
-                videoInPlaylist(playlist)
-                  ? toast.error("Video already exists in the playlist")
-                  : addToPlaylist(playlist._id, video, userToken, videoDispatch)
-              }
-            >
-              <label className="playlist">
-                {videoInPlaylist(playlist) ? (
-                  <AiFillCheckCircle className="check-icon" />
-                ) : (
-                  <AiFillPlusCircle className="circle-icon" />
-                )}
+        {playlists.length > 0 && (
+          <ul className="playlists">
+            {playlists.map((playlist) => (
+              <li
+                key={playlist._id}
+                onClick={() =>
+                  videoInPlaylist(playlist)
+                    ? deleteFromPlaylist(
+                        playlist,
+                        video,
+                        userToken,
+                        videoDispatch
+                      )
+                    : addToPlaylist(
+                        playlist._id,
+                        video,
+                        userToken,
+                        videoDispatch
+                      )
+                }
+              >
+                <label className="playlist">
+                  {videoInPlaylist(playlist) ? (
+                    <AiFillCheckCircle className="check-icon" />
+                  ) : (
+                    <AiFillPlusCircle className="circle-icon" />
+                  )}
 
-                {playlist.title}
-              </label>
-            </li>
-          ))}
-        </ul>
+                  {playlist.title}
+                </label>
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="create-playlist">
           <input
             type="text"

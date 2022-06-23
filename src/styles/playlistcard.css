@@ -1,16 +1,11 @@
 .playlist-card {
   height: auto;
   width: 17rem;
-  background-color: var(--PAGE-BG);
+  background-color: var(--CARD-BG);
   color: var(--CARD-DARK);
   margin: 10px;
   border-radius: 1rem;
   overflow: hidden;
-}
-
-.playlist-card.dark {
-  background-color: var(--CARD-BG);
-  color: var(--THEME-TEXT);
 }
 
 .playlist-details {
@@ -44,4 +39,8 @@
   top: 1.25rem;
   right: 2.5rem;
   font-size: 1.875rem;
+}
+
+.delete-video:hover {
+  cursor: pointer;
 }

@@ -22,7 +22,7 @@ export default function Router() {
       <Route element={<RequiresAuth />}>
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/history" element={<History />} />
-        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/playlists" element={<Playlist />} />
         <Route path="/playlist/:playlistId" element={<PlaylistPage />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/watchlater" element={<WatchLater />} />

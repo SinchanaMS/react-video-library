@@ -19,9 +19,9 @@ export default function Sidebar() {
         <MdHistory className="sidebar-icons" />
         <p className="sidebar-pages p-sm">History</p>
       </NavLink>
-      <NavLink className="sidebar-links" to="/playlist">
+      <NavLink className="sidebar-links" to="/playlists">
         <MdPlaylistPlay className="sidebar-icons" />
-        <p className="sidebar-pages p-sm">Playlist</p>
+        <p className="sidebar-pages p-sm">Playlists</p>
       </NavLink>
       <NavLink className="sidebar-links" to="/liked">
         <MdThumbUp className="sidebar-icons" />

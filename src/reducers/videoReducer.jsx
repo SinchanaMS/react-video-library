@@ -14,7 +14,7 @@ export function videoReducer(state, action) {
     case "ADD_TO_HISTORY":
     case "DELETE_FROM_HISTORY":
     case "CLEAR_HISTORY":
-      return { ...state, history: action.payload };
+      return { ...state, history: action.payload.reverse() };
 
     case "CREATE_PLAYLIST":
     case "DELETE_PLAYLIST":

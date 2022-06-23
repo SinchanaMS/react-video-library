@@ -11,6 +11,7 @@
   --AUTH-CARD-BG: #ded6d6;
   --AUTH-CTAS: #ebbd08;
   --PROFILE-CARD-BG: #dfd877;
+  --MODAL-BG: #1e1b1bb1;
   --PROFILE-CARD-GRADIENT: linear-gradient(
     138deg,
     #dfd877 0%,
@@ -30,9 +31,8 @@
   --CARD-BG: #e5e4e4;
   --CTAS: #3b3939;
   --PAGE-BG: #e5e4e4;
-  --MODAL-BG: #f5f1f10e;
   --PRIMARY-BG: #ebbd08;
-  --THEME-TEXT: #171717;
+  --THEME-TEXT: #302e2e;
   --SCROLLBAR-BG: #e5e4e4;
   --SCROLLBAR-THUMB: #ded6d6;
   --GRAY-TEXT: #676666;
@@ -43,7 +43,6 @@
   --CARD-BG: #2b2a2a;
   --CTAS: #ded6d6;
   --PAGE-BG: #171717;
-  --MODAL-BG: #53535315;
   --PRIMARY-BG: #f4d453;
   --THEME-TEXT: #e9e6e6;
   --SCROLLBAR-BG: #171717;
@@ -68,6 +67,16 @@ body::-webkit-scrollbar {
 
 .suggestions::-webkit-scrollbar-thumb,
 .videos::-webkit-scrollbar-thumb {
+  background-color: var(--SCROLLBAR-THUMB);
+  border-radius: 10px;
+}
+
+.playlists::-webkit-scrollbar {
+  width: 7px;
+  background: var(--SCROLLBAR-BG);
+}
+
+.playlists::-webkit-scrollbar-thumb {
   background-color: var(--SCROLLBAR-THUMB);
   border-radius: 10px;
 }

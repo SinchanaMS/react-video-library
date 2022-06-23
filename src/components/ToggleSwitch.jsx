@@ -12,7 +12,6 @@ function ToggleSwitch() {
       : videoDispatch({ type: "SORT_BY", payload: "Oldest" });
   };
 
-  console.log(videoData.sortBy);
   useEffect(
     () => {
       toggleHandler();

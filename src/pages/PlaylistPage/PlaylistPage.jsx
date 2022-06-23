@@ -22,7 +22,7 @@ export default function PlaylistPage() {
 
   return (
     <div className="video-list">
-      {findPlaylist?.length === 0 ? (
+      {filteredVideos?.length === 0 ? (
         <div className="empty-page">
           <img src={empty} alt="empty-page" />
           <p>No results found.</p>

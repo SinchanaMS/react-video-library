@@ -11,15 +11,12 @@
   padding: 2rem 1rem 2rem 10px;
 }
 
-.dark .sidebar-links {
-  color: var(--CTAS);
-}
-
 .sidebar-links {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: var(--THEME-TEXT);
   padding: 5px;
   height: 5rem;
 }

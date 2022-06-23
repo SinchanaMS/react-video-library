@@ -67,6 +67,10 @@ html {
   font-size: 24px;
 }
 
+.player-options:hover {
+  cursor: pointer;
+}
+
 .video-text {
   display: flex;
   justify-content: space-between;

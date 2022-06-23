@@ -68,6 +68,10 @@
   gap: 1rem;
 }
 
+.header-ctas:hover {
+  cursor: pointer;
+}
+
 .user-dialog {
   display: block;
   position: relative;
