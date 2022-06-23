@@ -55,7 +55,8 @@ body {
   height: auto;
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.category-list::-webkit-scrollbar {
   display: none;
 }
 

@@ -325,6 +325,7 @@
     align-items: flex-start;
     margin-left: 1.5rem;
     width: 95vw;
+    gap: 1rem;
   }
 
   .category-list {
@@ -368,7 +369,7 @@
     min-height: auto;
   }
 
-  .category-list {
+  .category-list li {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 1rem;
@@ -385,17 +386,14 @@
     width: 100%;
   }
 
-  .sort-options {
-    display: flex;
-    position: absolute;
-    top: 4rem;
-    right: 1rem;
-  }
-
   .filters {
-    gap: 10px;
+    gap: 0px;
     margin-left: 12px;
     align-items: flex-start;
+  }
+
+  .filters > div:first-child {
+    margin-left: 0.5rem;
   }
 }
 
@@ -416,9 +414,23 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     overflow-x: scroll;
+    gap: 2px;
+  }
+
+  .category-list li {
+    font-size: x-small;
+    margin: auto;
   }
 
   .category-list p {
     display: none;
+  }
+
+  .filters {
+    gap: 1rem;
+  }
+
+  .filters > div:first-child {
+    margin-left: 0.5rem;
   }
 }
