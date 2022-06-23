@@ -78,3 +78,17 @@
 .toggle-pwd:hover {
   cursor: pointer;
 }
+
+.login {
+  min-width: 8rem;
+  margin: auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: var(--AUTH-CARD-BG);
+  color: var(--DARK-YELLOW);
+  border: none;
+}
+
+.login:hover {
+  filter: brightness(0.95);
+}

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "styles/signup.css";
 
@@ -23,15 +23,14 @@ export default function SignUp() {
   const setUserData = (e) => {
     const { name, value } = e.target;
     setSignUpData((prev) => ({ ...prev, [name]: value }));
-    signupValidation(signUpData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (signUpData.password.length < 8) {
+    if (signUpData.password.length > 0 && signUpData.password.length < 8) {
       setSignUpError("Password must contain 8 characters");
     } else {
-      sendSignUpData(signUpData);
+      signUpError === "" && sendSignUpData(signUpData);
     }
   };
 
@@ -44,8 +43,12 @@ export default function SignUp() {
       } else {
         setSignUpError("");
       }
+    } else if (password.length === 0) {
+      setSignUpError("");
     }
   };
+
+  useEffect(() => signupValidation(signUpData), [signUpData.password]);
 
   const sendSignUpData = async (data) => {
     if (data.password === data.confirmPassword) {

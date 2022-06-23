@@ -103,6 +103,20 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
+.sign-up {
+  min-width: 8rem;
+  margin: auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: var(--AUTH-CARD-BG);
+  color: var(--DARK-YELLOW);
+  border: none;
+}
+
+.sign-up:hover {
+  filter: brightness(0.95);
+}
+
 @media (max-width: 480px) {
   .page-body {
     align-items: center;
