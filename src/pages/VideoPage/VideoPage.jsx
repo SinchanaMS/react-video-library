@@ -12,6 +12,7 @@ import {
 import "styles/video.css";
 import "styles/videolisting.css";
 import PlaylistModal from "components/PlaylistModal";
+import toast from "react-hot-toast";
 
 export default function VideoPage() {
   const { videoId } = useParams();
@@ -116,7 +117,9 @@ export default function VideoPage() {
               <MdPlaylistPlay
                 className="player-options p-sm"
                 onClick={() => {
-                  setShowPlaylistModal((prev) => !prev);
+                  userToken
+                    ? setShowPlaylistModal((prev) => !prev)
+                    : toast("Please login to continue");
                 }}
               />
             </div>

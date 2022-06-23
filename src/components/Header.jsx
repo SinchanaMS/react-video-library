@@ -56,13 +56,12 @@ export default function Header() {
               showUserDialog ? "user-options show" : "user-options hide"
             }
           >
-            <div className="user-options-ctas">
-              <Link to="/profile" className="user-actions">
-                Profile
-              </Link>
-            </div>
             {isLoggedIn ? (
               <div className="user-options-ctas">
+                <Link to="/profile" className="user-actions">
+                  Profile
+                </Link>
+
                 <Link
                   to="/"
                   onClick={() => logoutHandler()}

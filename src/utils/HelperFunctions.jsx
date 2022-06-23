@@ -17,87 +17,106 @@ export const categories = async (videoDispatch) => {
 };
 
 export const addToWatchlist = async (video, userToken, videoDispatch) => {
-  try {
-    const response = await axios.post(
-      "/api/user/watchlater",
-      { video },
-      {
-        headers: {
-          authorization: userToken,
-        },
+  if (userToken) {
+    try {
+      const response = await axios.post(
+        "/api/user/watchlater",
+        { video },
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 201) {
+        videoDispatch({
+          type: "ADD_TO_WATCHLIST",
+          payload: response.data.watchlater,
+        });
+        toast.success("Added to Watchlist");
       }
-    );
-    if (response.status === 201) {
-      videoDispatch({
-        type: "ADD_TO_WATCHLIST",
-        payload: response.data.watchlater,
-      });
-      toast.success("Added to Watchlist");
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
 export const removeFromWatchlist = async (video, userToken, videoDispatch) => {
-  try {
-    const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
-      headers: {
-        authorization: userToken,
-      },
-    });
-    if (response.status === 200) {
-      videoDispatch({
-        type: "REMOVE_FROM_WATCHLIST",
-        payload: response.data.watchlater,
+  if (userToken) {
+    try {
+      const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
+        headers: {
+          authorization: userToken,
+        },
       });
-      toast.success("Removed from Watchlist");
+      if (response.status === 200) {
+        videoDispatch({
+          type: "REMOVE_FROM_WATCHLIST",
+          payload: response.data.watchlater,
+        });
+        toast.success("Removed from Watchlist");
+      }
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
 export const addToLikedList = async (video, userToken, videoDispatch) => {
-  try {
-    const response = await axios.post(
-      "/api/user/likes",
-      { video },
-      {
-        headers: {
-          authorization: userToken,
-        },
+  if (userToken) {
+    try {
+      const response = await axios.post(
+        "/api/user/likes",
+        { video },
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 201) {
+        videoDispatch({
+          type: "ADD_TO_LIKEDLIST",
+          payload: response.data.likes,
+        });
+        toast.success("Added to Liked Videos");
       }
-    );
-    if (response.status === 201) {
-      videoDispatch({ type: "ADD_TO_LIKEDLIST", payload: response.data.likes });
-      toast.success("Added to Liked Videos");
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
 export const removeFromLikedList = async (video, userToken, videoDispatch) => {
-  try {
-    const response = await axios.delete(`/api/user/likes/${video._id}`, {
-      headers: {
-        authorization: userToken,
-      },
-    });
-    if (response.status === 200) {
-      videoDispatch({
-        type: "REMOVE_FROM_LIKEDLIST",
-        payload: response.data.likes,
+  if (userToken) {
+    try {
+      const response = await axios.delete(`/api/user/likes/${video._id}`, {
+        headers: {
+          authorization: userToken,
+        },
       });
-      toast.success("Removed from Liked Videos");
+      if (response.status === 200) {
+        videoDispatch({
+          type: "REMOVE_FROM_LIKEDLIST",
+          payload: response.data.likes,
+        });
+        toast.success("Removed from Liked Videos");
+      }
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
@@ -167,49 +186,60 @@ export const createPlaylist = async (
   setPlaylist,
   userToken
 ) => {
-  try {
-    const response = await axios.post(
-      "/api/user/playlists",
-      {
-        playlist: { title: title, description: description },
-      },
-      {
-        headers: {
-          authorization: userToken,
+  if (userToken) {
+    try {
+      const response = await axios.post(
+        "/api/user/playlists",
+        {
+          playlist: { title: title, description: description },
         },
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 201) {
+        videoDispatch({
+          type: "CREATE_PLAYLIST",
+          payload: response.data.playlists,
+        });
+        setPlaylist({ title: "", description: "" });
+        toast.success("Created the playlist");
       }
-    );
-    if (response.status === 201) {
-      videoDispatch({
-        type: "CREATE_PLAYLIST",
-        payload: response.data.playlists,
-      });
-      setPlaylist({ title: "", description: "" });
-      toast.success("Created the playlist");
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
 export const deletePlaylist = async (playlist, userToken, videoDispatch) => {
-  try {
-    const response = await axios.delete(`/api/user/playlists/${playlist._id}`, {
-      headers: {
-        authorization: userToken,
-      },
-    });
-    if (response.status === 200) {
-      videoDispatch({
-        type: "DELETE_PLAYLIST",
-        payload: response.data.playlists,
-      });
-      toast.success("Deleted the playlist");
+  if (userToken) {
+    try {
+      const response = await axios.delete(
+        `/api/user/playlists/${playlist._id}`,
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 200) {
+        videoDispatch({
+          type: "DELETE_PLAYLIST",
+          payload: response.data.playlists,
+        });
+        toast.success("Deleted the playlist");
+      }
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
@@ -219,33 +249,37 @@ export const addToPlaylist = async (
   userToken,
   videoDispatch
 ) => {
-  try {
-    const response = await axios.post(
-      `/api/user/playlists/${playlistID}`,
-      { video },
-      {
-        headers: {
-          authorization: userToken,
-        },
+  if (userToken) {
+    try {
+      const response = await axios.post(
+        `/api/user/playlists/${playlistID}`,
+        { video },
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 409) {
+        toast.error("Video already exists in the playlist");
       }
-    );
-    if (response.status === 409) {
-      toast.error("Video already exists in the playlist");
+      if (response.status === 201 || response.status === 200) {
+        videoDispatch({
+          type: "ADD_TO_PLAYLIST",
+          payload: response.data.playlist,
+        });
+        toast.success("Added to playlist");
+      }
+    } catch (error) {
+      if (error.response.status === 409) {
+        toast.error("Video already exists in the playlist");
+      } else {
+        toast.error("Oops! An error occurred.Try again later.");
+        console.log(error.message);
+      }
     }
-    if (response.status === 201 || response.status === 200) {
-      videoDispatch({
-        type: "ADD_TO_PLAYLIST",
-        payload: response.data.playlist,
-      });
-      toast.success("Added to playlist");
-    }
-  } catch (error) {
-    if (error.response.status === 409) {
-      toast.error("Video already exists in the playlist");
-    } else {
-      toast.error("Oops! An error occurred.Try again later.");
-      console.log(error.message);
-    }
+  } else {
+    toast("Please login to continue");
   }
 };
 
@@ -255,25 +289,29 @@ export const deleteFromPlaylist = async (
   userToken,
   videoDispatch
 ) => {
-  try {
-    const response = await axios.delete(
-      `/api/user/playlists/${playlist._id}/${video._id}`,
-      {
-        headers: {
-          authorization: userToken,
-        },
+  if (userToken) {
+    try {
+      const response = await axios.delete(
+        `/api/user/playlists/${playlist._id}/${video._id}`,
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 200) {
+        videoDispatch({
+          type: "DELETE_FROM_PLAYLIST",
+          payload: response.data.playlist,
+        });
+        toast.success("Deleted from playlist");
       }
-    );
-    if (response.status === 200) {
-      videoDispatch({
-        type: "DELETE_FROM_PLAYLIST",
-        payload: response.data.playlist,
-      });
-      toast.success("Deleted from playlist");
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
     }
-  } catch (error) {
-    toast.error("Oops! An error occurred.Try again later.");
-    console.log(error.message);
+  } else {
+    toast("Please login to continue");
   }
 };
 
