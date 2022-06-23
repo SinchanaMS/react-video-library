@@ -33,8 +33,12 @@ export default function Login() {
         navigate(lastLocation);
       }
     } catch (error) {
-      setLoginError("An error occurred.");
-      console.log("error:", error);
+      if (error.response.status === 404) {
+        setLoginError("Invalid credentials. Please sign up to continue.");
+      } else {
+        setLoginError("An error occurred.");
+        console.log("error:", error);
+      }
     }
   };
 
@@ -73,15 +77,6 @@ export default function Login() {
               onChange={setUserData}
             />
           </div>
-          <div className="auth-opts">
-            <div className="checkbox-btn remember-me">
-              <input type="checkbox" name="checkbox" />
-              <label className="label">Remember Me</label>
-            </div>
-            <a href="#" className="forgot-pwd">
-              Forgot Password?
-            </a>
-          </div>
           <div className="auth-btns">
             <button className="btn link-btn-outline login-btn icon-dark">
               Login
@@ -99,7 +94,7 @@ export default function Login() {
         <hr />
         <br />
         <div className="new-user">
-          <Link to="/signup" className="link-in-btn">
+          <Link to="/signup" className="link-in-btn sign-up">
             Create New Account
           </Link>
         </div>

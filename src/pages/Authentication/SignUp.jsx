@@ -23,30 +23,48 @@ export default function SignUp() {
   const setUserData = (e) => {
     const { name, value } = e.target;
     setSignUpData((prev) => ({ ...prev, [name]: value }));
+    signupValidation(signUpData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendSignUpData(signUpData);
+    if (signUpData.password.length < 8) {
+      setSignUpError("Password must contain 8 characters");
+    } else {
+      sendSignUpData(signUpData);
+    }
   };
 
-  let lastLocation = location.state?.from?.pathname;
+  let lastLocation = location?.state?.from?.pathname;
+
+  const signupValidation = ({ password }) => {
+    if (password.length > 0) {
+      if (password[0] === " ") {
+        setSignUpError("Password cannot start with an empty space");
+      } else {
+        setSignUpError("");
+      }
+    }
+  };
+
   const sendSignUpData = async (data) => {
     if (data.password === data.confirmPassword) {
-      try {
-        const response = await axios.post("/api/auth/signup", data);
-        if (response.status === 201) {
-          const { data } = response;
-          const userToken = data.encodedToken;
-          localStorage.setItem("userToken", userToken);
-          navigate(lastLocation);
+      if (signUpError === "") {
+        try {
+          const response = await axios.post("/api/auth/signup", data);
+          if (response.status === 201) {
+            const { data } = response;
+            const userToken = data.encodedToken;
+            localStorage.setItem("userToken", userToken);
+            navigate(lastLocation ?? "/");
+          }
+        } catch (error) {
+          setSignUpError("An error occurred.");
+          console.log(error);
         }
-      } catch (error) {
-        setSignUpError("An error occurred.");
-        console.log(error);
       }
     } else {
-      setSignUpError("Passwords don't match!!");
+      setSignUpError("Passwords don't match.");
     }
   };
 
@@ -87,6 +105,7 @@ export default function SignUp() {
               required
               onChange={setUserData}
             />
+            <p className="p-sm ">*Password must contain 8 characters</p>
             <span
               className="toggle-pwd material-icons material-icons-outlined"
               onClick={() =>
@@ -121,15 +140,11 @@ export default function SignUp() {
             </span>
           </div>
           {signUpError && <p className="val-error"> {signUpError}</p>}
-          <div className="checkbox-btn t-and-c">
-            <input type="checkbox" name="checkbox" required />
-            <label className="label">I accept all Terms & Conditions</label>
-          </div>
           <button className="btn link-btn-outline signup-btn icon-dark">
             Sign Up
           </button>
           <div className="existing-user">
-            <Link to="/login" className="link-in-btn p-lg">
+            <Link to="/login" className="link-in-btn login">
               Already have an account
             </Link>
           </div>
