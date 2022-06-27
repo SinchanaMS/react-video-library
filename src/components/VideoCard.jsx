@@ -35,20 +35,18 @@ export default function VideoCard({ video }) {
 
   useEffect(() => {
     if (showOptions) {
-      setTimeout(() => setShowOptions(false), 3000);
+      setTimeout(() => setShowOptions(false), 5000);
     }
     return clearTimeout();
   }, [showOptions]);
 
   return (
-    <div>
-      <div
-        className={theme === "light" ? "video-card shadow" : "video-card"}
-        key={id}
-      >
-        <Link to={`/video/${video.videoId}`}>
-          <img src={url} alt={title} className="video-thumbnail" />
-        </Link>
+    <div
+      className={theme === "light" ? "video-card shadow" : "video-card"}
+      key={id}
+    >
+      <Link to={`/video/${video.videoId}`}>
+        <img src={url} alt={title} className="video-thumbnail" />
         <div className="video-details">
           <img src={creatorImg} className="creator-dp" />
           <div className="creator-text">
@@ -58,58 +56,60 @@ export default function VideoCard({ video }) {
             <p className="video-creator p-sm p-grey">{creator}</p>
             <p className="video-views p-sm p-grey">{views} views</p>
           </div>
-          <div>
-            <MdMoreVert
-              className={showOptions ? "more-options active" : "more-options"}
-              onClick={() => setShowOptions((prev) => !prev)}
-            />
-            <div
-              className={
-                showOptions ? "options-dialog shadow" : "options-dialog hide"
-              }
+        </div>
+      </Link>
+      <div>
+        <MdMoreVert
+          className={showOptions ? "more-options active" : "more-options"}
+          onClick={() => {
+            setShowOptions((prev) => !prev);
+          }}
+        />
+        <div
+          className={
+            showOptions ? "options-dialog shadow" : "options-dialog hide"
+          }
+        >
+          {inWatchList ? (
+            <button
+              className="options"
+              onClick={() => {
+                removeFromWatchlist(video, userToken, videoDispatch);
+              }}
             >
-              {inWatchList ? (
-                <button
-                  className="options"
-                  onClick={() => {
-                    removeFromWatchlist(video, userToken, videoDispatch);
-                  }}
-                >
-                  <MdWatchLater /> Remove from Watch Later
-                </button>
-              ) : (
-                <button
-                  className="options"
-                  onClick={() => {
-                    addToWatchlist(video, userToken, videoDispatch);
-                  }}
-                >
-                  <MdOutlineWatchLater />
-                  Add to Watch Later
-                </button>
-              )}
-              {inLikedList ? (
-                <button
-                  className="options"
-                  onClick={() => {
-                    removeFromLikedList(video, userToken, videoDispatch);
-                  }}
-                >
-                  <IoHeartSharp /> Remove from Liked Videos
-                </button>
-              ) : (
-                <button
-                  className="options"
-                  onClick={() => {
-                    addToLikedList(video, userToken, videoDispatch);
-                  }}
-                >
-                  <IoHeartOutline />
-                  Add to Liked Videos
-                </button>
-              )}
-            </div>
-          </div>
+              <MdWatchLater /> Remove from Watch Later
+            </button>
+          ) : (
+            <button
+              className="options"
+              onClick={() => {
+                addToWatchlist(video, userToken, videoDispatch);
+              }}
+            >
+              <MdOutlineWatchLater />
+              Add to Watch Later
+            </button>
+          )}
+          {inLikedList ? (
+            <button
+              className="options"
+              onClick={() => {
+                removeFromLikedList(video, userToken, videoDispatch);
+              }}
+            >
+              <IoHeartSharp /> Remove from Liked Videos
+            </button>
+          ) : (
+            <button
+              className="options"
+              onClick={() => {
+                addToLikedList(video, userToken, videoDispatch);
+              }}
+            >
+              <IoHeartOutline />
+              Add to Liked Videos
+            </button>
+          )}
         </div>
       </div>
     </div>
