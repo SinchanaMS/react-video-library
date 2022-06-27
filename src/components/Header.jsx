@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdNightlightRound, MdWbSunny } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineUser } from "react-icons/ai";
@@ -24,6 +24,13 @@ export default function Header() {
   const placeholderText = placeholders.find(
     (item) => item.location === location?.pathname
   )?.placeholder;
+
+  useEffect(() => {
+    if (showUserDialog) {
+      setTimeout(() => setShowUserDialog(false), 3000);
+    }
+    return clearTimeout();
+  }, [showUserDialog]);
 
   return (
     <div className="header">
