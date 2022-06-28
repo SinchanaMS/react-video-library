@@ -299,12 +299,46 @@ export const deleteFromPlaylist = async (
           },
         }
       );
+      console.log(response);
       if (response.status === 200) {
         videoDispatch({
           type: "DELETE_FROM_PLAYLIST",
           payload: response.data.playlist,
         });
         toast.success("Deleted from playlist");
+      }
+    } catch (error) {
+      toast.error("Oops! An error occurred.Try again later.");
+      console.log(error.message);
+    }
+  } else {
+    toast("Please login to continue");
+  }
+};
+
+export const clearPlaylist = async (
+  playlist,
+  userToken,
+  videoDispatch,
+  navigate
+) => {
+  if (userToken) {
+    try {
+      const response = await axios.delete(
+        `/api/user/playlists/${playlist._id}`,
+        {
+          headers: {
+            authorization: userToken,
+          },
+        }
+      );
+      if (response.status === 200) {
+        videoDispatch({
+          type: "DELETE_PLAYLIST",
+          payload: response.data.playlists,
+        });
+        toast.success("Cleared the playlist");
+        navigate("/playlists");
       }
     } catch (error) {
       toast.error("Oops! An error occurred.Try again later.");
@@ -351,6 +385,7 @@ export const helperFunctions = {
   deletePlaylist,
   addToPlaylist,
   deleteFromPlaylist,
+  clearPlaylist,
   filterByCategory,
   sortBy,
   searchFor,

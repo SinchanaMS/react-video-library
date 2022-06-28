@@ -110,3 +110,8 @@
 .circle-icon {
   font-size: 20px;
 }
+
+.playlists-container {
+  display: flex;
+  padding-top: 10px;
+}
