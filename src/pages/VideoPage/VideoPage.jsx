@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import VideoCard from "components/VideoCard";
 import { useTheme, useVideo, usePlaylist } from "contexts/contexts";
 import ReactPlayer from "react-player";
@@ -42,18 +41,9 @@ export default function VideoPage() {
 
   const video = getVideo(filteredVideos, videoId);
   const suggestedList = suggestedVideos(filteredVideos, video);
+  const { showPlaylistModal, setShowPlaylistModal } = usePlaylist();
   const inWatchList = watchList.some((item) => item._id === video._id);
   const inLikedList = likedList.some((item) => item._id === video._id);
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 100,
-      behavior: "smooth",
-    });
-  }, [video]);
-
-  const { showPlaylistModal, setShowPlaylistModal } = usePlaylist();
 
   return (
     <div className="player">

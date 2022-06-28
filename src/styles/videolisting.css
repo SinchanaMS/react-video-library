@@ -193,7 +193,8 @@
   margin: 0 auto 10px;
 }
 
-.history-list .clear-history {
+.history-list .clear-history,
+.clear-all {
   align-self: flex-end;
   padding: 4px 10px;
   border-radius: 4px;
@@ -262,6 +263,12 @@
 
 .empty-page p {
   font-size: large;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 8.5rem);
 }
 
 @media (max-width: 1496px) {
