@@ -1,8 +1,3 @@
-.main-content {
-  display: flex;
-  min-width: 20rem;
-}
-
 .video-list {
   width: calc(100vw - 6.5rem);
   display: grid;
